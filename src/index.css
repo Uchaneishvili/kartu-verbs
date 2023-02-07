@@ -1,4 +1,9 @@
 /** @format */
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	background-color: #f8f8f9;
+}
+
 .page-wrapper {
 	background: #ffffff;
 	padding: 25px 16px;
