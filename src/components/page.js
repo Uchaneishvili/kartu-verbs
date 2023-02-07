@@ -1,9 +1,10 @@
 /** @format */
 
-import React from 'react';
+import React from "react";
+import styles from "./page.module.css";
 
 function Page({ children }) {
-	return <div className='page-wrapper'>{children}</div>;
+  return <div className={styles.wrapper}>{children}</div>;
 }
 
 export default Page;
