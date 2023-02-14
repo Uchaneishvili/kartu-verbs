@@ -1,6 +1,7 @@
 .wrapper {
   height: 75vh !important;
   margin-bottom: 10px;
+  position: relative;
 }
 
 /*this is for demo only*/
