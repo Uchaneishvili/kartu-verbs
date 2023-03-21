@@ -69,13 +69,6 @@ body {
 }
 
 .searchBarContainer {
-	width: 500px;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	align-content: center;
-	justify-content: flex-end;
-	align-items: center;
 	height: 30px;
 }
 
