@@ -11,9 +11,20 @@ import FormatData from '../../utils/FormatData';
 function DetailPage() {
 	const { Panel } = Collapse;
 
-	const [list] = useList(
+	// ?verb_1 n1:tense n1:imperfect . }
+	const [present] = useList(
 		'http://servolis.irisa.fr:3737/kartuverbs/sparql',
-		'PREFIX n1: <file:///home/ferre/data/ontologies/Kartu-verbs/> SELECT DISTINCT ?verb_1 ?Georgian_form_38 ?person_42 ?number_46 ?preverb_54 ?preradical_58 ?root_62 ?postradical_66 ?pFSF_70 ?ending_74 WHERE { ?verb_1 a n1:verb .?verb_1 n1:Georgian_form ?Georgian_form_38 .?verb_1 n1:person ?person_42 .?verb_1 n1:number ?number_46 .?verb_1 n1:preverb ?preverb_54 .?verb_1 n1:preradical ?preradical_58 .?verb_1 n1:root ?root_62 .?verb_1 n1:postradical ?postradical_66 .?verb_1 n1:pFSF ?pFSF_70 .?verb_1 n1:ending ?ending_74 . } LIMIT 50'
+		'PREFIX n1: <file:///home/ferre/data/ontologies/Kartu-verbs/>SELECT DISTINCT ?verb_1 ?Georgian_form_38 ?person_42 ?number_46 ?preverb_54 ?preradical_58 ?root_62 ?postradical_66 ?pFSF_70 ?ending_74 ?tense_78WHERE { ?verb_1 a n1:verb .?verb_1 n1:Georgian_form ?Georgian_form_38 .?verb_1 n1:person ?person_42 .?verb_1 n1:number ?number_46 .?verb_1 n1:preverb ?preverb_54 .?verb_1 n1:preradical ?preradical_58 .?verb_1 n1:root ?root_62 .?verb_1 n1:postradical ?postradical_66 .?verb_1 n1:pFSF ?pFSF_70 .?verb_1 n1:ending ?ending_74 .?verb_1 n1:tense ?tense_78 .?verb_1 n1:tense n1:present . }LIMIT 9'
+	);
+
+	const [past] = useList(
+		'http://servolis.irisa.fr:3737/kartuverbs/sparql',
+		'PREFIX n1: <file:///home/ferre/data/ontologies/Kartu-verbs/>SELECT DISTINCT ?verb_1 ?Georgian_form_38 ?person_42 ?number_46 ?preverb_54 ?preradical_58 ?root_62 ?postradical_66 ?pFSF_70 ?ending_74 ?tense_78WHERE { ?verb_1 a n1:verb .?verb_1 n1:Georgian_form ?Georgian_form_38 .?verb_1 n1:person ?person_42 .?verb_1 n1:number ?number_46 .?verb_1 n1:preverb ?preverb_54 .?verb_1 n1:preradical ?preradical_58 .?verb_1 n1:root ?root_62 .?verb_1 n1:postradical ?postradical_66 .?verb_1 n1:pFSF ?pFSF_70 .?verb_1 n1:ending ?ending_74 .?verb_1 n1:tense ?tense_78 .?verb_1 n1:tense n1:imperfect . }LIMIT 9'
+	);
+
+	const [future] = useList(
+		'http://servolis.irisa.fr:3737/kartuverbs/sparql',
+		'PREFIX n1: <file:///home/ferre/data/ontologies/Kartu-verbs/>SELECT DISTINCT ?verb_1 ?Georgian_form_38 ?person_42 ?number_46 ?preverb_54 ?preradical_58 ?root_62 ?postradical_66 ?pFSF_70 ?ending_74 ?tense_78WHERE { ?verb_1 a n1:verb .?verb_1 n1:Georgian_form ?Georgian_form_38 .?verb_1 n1:person ?person_42 .?verb_1 n1:number ?number_46 .?verb_1 n1:preverb ?preverb_54 .?verb_1 n1:preradical ?preradical_58 .?verb_1 n1:root ?root_62 .?verb_1 n1:postradical ?postradical_66 .?verb_1 n1:pFSF ?pFSF_70 .?verb_1 n1:ending ?ending_74 .?verb_1 n1:tense ?tense_78 .?verb_1 n1:tense n1:future . }LIMIT 9'
 	);
 
 	const generatePersonAndNumber = (record) => {
@@ -93,42 +104,36 @@ function DetailPage() {
 							defaultActiveKey={['1']}
 							style={{ width: '100%' }}>
 							<Panel
-								header='This is panel header 1'
+								header='Present Subseries'
 								key='1'>
 								<Row style={{ justifyContent: 'space-between' }}>
 									<Table
 										size='small'
 										bordered={false}
 										columns={columns}
-										dataSource={list}
+										dataSource={present}
 										pagination={false}
-										rowKey={(record) => record.u}
+										rowKey={(record) => record.verb_1}
+									/>
+									<Table
+										size='small'
+										bordered={false}
+										columns={columns}
+										dataSource={past}
+										pagination={false}
+										rowKey={(record) => record.verb_1}
 									/>
 
 									<Table
 										size='small'
 										bordered={false}
 										columns={columns}
-										dataSource={[]}
-										pagination={false}
-										rowKey={(record) => record.verb_1}
-									/>
-									<Table
-										size='small'
-										bordered={false}
-										columns={columns}
-										dataSource={[]}
+										dataSource={future}
 										pagination={false}
 										rowKey={(record) => record.verb_1}
 									/>
 								</Row>
 							</Panel>
-							<Panel
-								header='This is panel header 2'
-								key='2'></Panel>
-							<Panel
-								header='This is panel header 3'
-								key='3'></Panel>
 						</Collapse>
 					</div>
 				</div>
