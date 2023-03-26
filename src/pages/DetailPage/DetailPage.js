@@ -3,9 +3,7 @@
 import React from 'react';
 import { Table, Collapse, Row } from 'antd';
 import { useList } from '../../hooks/TableDataLoader.js';
-
 import Page from '../../components/page';
-
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 
@@ -58,7 +56,7 @@ function DetailPage() {
 		},
 
 		{
-			render: (record, value, index) => {
+			render: (record) => {
 				return (
 					<>
 						{record.preverb_54.slice(3).replace(/-/g, '')}
@@ -92,7 +90,7 @@ function DetailPage() {
 										columns={columns}
 										dataSource={list}
 										pagination={false}
-										rowKey={(record) => record.u}
+										rowKey={(record) => record.verb_1}
 									/>
 
 									<Table
@@ -110,7 +108,6 @@ function DetailPage() {
 										dataSource={[]}
 										pagination={false}
 										rowKey={(record) => record.u}
-										x
 									/>
 								</Row>
 							</Panel>
