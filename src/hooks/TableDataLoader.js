@@ -3,11 +3,12 @@
 import axios from 'axios';
 import { useState, useEffect, useCallback } from 'react';
 
-export function useList(url, query) {
+export function useList(query) {
 	const [list, setList] = useState([]);
 
 	const getData = useCallback(async () => {
 		try {
+			const url= "http://servolis.irisa.fr:3737/kartuverbs/sparql";
 			const response = await axios.get(url, {
 				params: {
 					query: query,
@@ -40,7 +41,7 @@ export function useList(url, query) {
 		} catch (error) {
 			console.error(error);
 		}
-	}, [query, url]);
+	}, [query]);
 
 	useEffect(() => {
 		getData();
