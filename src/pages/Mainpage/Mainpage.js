@@ -1,22 +1,24 @@
 /** @format */
 
-import React from "react";
-import Page from "../../components/page";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
-import SearchBar from "../../components/SearchBar/SearchBar";
+import React from 'react';
+import Page from '../../components/page';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 function Mainpage() {
-  return (
-    <>
-      <Header search={true} />
+	return (
+		<>
+			<Header search={false} />
 
-      <Page>
-        <SearchBar />
-      </Page>
-      <Footer />
-    </>
-  );
+			<Page>
+				<div>
+					<SearchBar />
+				</div>
+			</Page>
+			<Footer />
+		</>
+	);
 }
 
 export default Mainpage;

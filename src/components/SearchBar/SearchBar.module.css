@@ -8,6 +8,9 @@
 	align-content: center;
 	justify-content: center;
 	align-items: center;
+	position: absolute;
+	left: 0;
+	right: 0;
 }
 
 .searchForm {
