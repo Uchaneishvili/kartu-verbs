@@ -57,6 +57,7 @@ body {
 .menuContainer,
 .logoContainer {
 	padding: 30px;
+	cursor: pointer;
 }
 
 .searchButton {
