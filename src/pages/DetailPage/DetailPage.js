@@ -26,12 +26,27 @@ function DetailPage() {
 			?verb_1 n1:tense n1:${prop} . }
 	LIMIT 6`;
   };
-  // ?verb_1 n1:tense n1:imperfect . }
+
+  //PRESENT SUBSERIES
   const [present] = useList(query("present"));
-
   const [presentConjunctive] = useList(query("presentConjunctive"));
-
   const [presentPerfect] = useList(query("presentPerfect"));
+
+  //FUTURE SUBSERIES
+  const [future] = useList(query("future"));
+
+  const [conditional] = useList(query("conditional"));
+
+  const [futureConjunctive] = useList(query("futureConjunctive"));
+
+  ///AORIST SERIES
+  const [aorist] = useList(query("aorist"));
+  const [optative] = useList(query("optative"));
+
+  //PERFECTIVE SERIES
+  const [imperfect] = useList(query("imperfect"));
+
+  const [pastPerfect] = useList(query("pastPerfect"));
 
   const generatePersonAndNumber = (record) => {
     switch (record.person_42.slice(3)) {
@@ -106,7 +121,11 @@ function DetailPage() {
       <Page>
         <div className="page-container">
           <div className="inner-container">
-            <Collapse defaultActiveKey={["1"]} style={{ width: "100%" }}>
+            <Collapse
+              accordion
+              defaultActiveKey={["1"]}
+              style={{ width: "100%" }}
+            >
               <Panel header="Present Subseries" key="1">
                 <Row style={{ justifyContent: "space-between" }}>
                   <Card
@@ -153,6 +172,133 @@ function DetailPage() {
                       bordered={false}
                       columns={columns}
                       dataSource={presentPerfect}
+                      pagination={false}
+                      rowKey={(record) => record.verb_1}
+                    />
+                  </Card>
+                </Row>
+              </Panel>
+
+              <Panel header=" Future Subseries " key="2">
+                <Row style={{ justifyContent: "space-between" }}>
+                  <Card
+                    title="Future"
+                    bordered={false}
+                    style={{
+                      width: 300,
+                    }}
+                  >
+                    <Table
+                      size="small"
+                      bordered={false}
+                      columns={columns}
+                      dataSource={future}
+                      pagination={false}
+                      rowKey={(record) => record.verb_1}
+                    />
+                  </Card>
+                  <Card
+                    title="conditional"
+                    bordered={false}
+                    style={{
+                      width: 300,
+                    }}
+                  >
+                    <Table
+                      size="small"
+                      bordered={false}
+                      columns={columns}
+                      dataSource={conditional}
+                      pagination={false}
+                      rowKey={(record) => record.verb_1}
+                    />
+                  </Card>
+                  <Card
+                    title="Future Conjuctive"
+                    bordered={false}
+                    style={{
+                      width: 300,
+                    }}
+                  >
+                    <Table
+                      size="small"
+                      bordered={false}
+                      columns={columns}
+                      dataSource={futureConjunctive}
+                      pagination={false}
+                      rowKey={(record) => record.verb_1}
+                    />
+                  </Card>
+                </Row>
+              </Panel>
+
+              <Panel header="Aoris Series" key="3">
+                <Row style={{ justifyContent: "space-between" }}>
+                  <Card
+                    title="Aorist"
+                    bordered={false}
+                    style={{
+                      width: 300,
+                    }}
+                  >
+                    <Table
+                      size="small"
+                      bordered={false}
+                      columns={columns}
+                      dataSource={aorist}
+                      pagination={false}
+                      rowKey={(record) => record.verb_1}
+                    />
+                  </Card>
+                  <Card
+                    title="Optative"
+                    bordered={false}
+                    style={{
+                      width: 300,
+                    }}
+                  >
+                    <Table
+                      size="small"
+                      bordered={false}
+                      columns={columns}
+                      dataSource={optative}
+                      pagination={false}
+                      rowKey={(record) => record.verb_1}
+                    />
+                  </Card>
+                </Row>
+              </Panel>
+
+              <Panel header="Perfect Indicative" key="4">
+                <Row style={{ justifyContent: "space-between" }}>
+                  <Card
+                    title="Imperfect"
+                    bordered={false}
+                    style={{
+                      width: 300,
+                    }}
+                  >
+                    <Table
+                      size="small"
+                      bordered={false}
+                      columns={columns}
+                      dataSource={imperfect}
+                      pagination={false}
+                      rowKey={(record) => record.verb_1}
+                    />
+                  </Card>
+                  <Card
+                    title="Past Perfect"
+                    bordered={false}
+                    style={{
+                      width: 300,
+                    }}
+                  >
+                    <Table
+                      size="small"
+                      bordered={false}
+                      columns={columns}
+                      dataSource={pastPerfect}
                       pagination={false}
                       rowKey={(record) => record.verb_1}
                     />
