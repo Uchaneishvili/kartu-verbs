@@ -6,6 +6,7 @@ import { useList } from '../../hooks/TableDataLoader.js';
 import Page from '../../components/page';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import FormatData from '../../utils/FormatData';
 
 function DetailPage() {
 	const { Panel } = Collapse;
@@ -59,12 +60,12 @@ function DetailPage() {
 			render: (record) => {
 				return (
 					<>
-						{record.preverb_54.slice(3).replace(/-/g, '')}
-						{record.preradical_58.slice(3).replace(/-/g, '')}
-						{record.root_62.slice(3).replace(/-/g, '')}
-						{record.postradical_66.slice(3).replace(/-/g, '')}
-						{record.pFSF_70.slice(3).replace(/-/g, '')}
-						{record.ending_74.slice(3).replace(/-/g, '')}
+						{FormatData.divideWord(record.preverb_54)}
+						{FormatData.divideWord(record.preradical_58)}
+						{FormatData.divideWord(record.root_62)}
+						{FormatData.divideWord(record.postradical_66)}
+						{FormatData.divideWord(record.pFSF_70)}
+						{FormatData.divideWord(record.ending_74)}
 					</>
 				);
 			},
@@ -99,7 +100,7 @@ function DetailPage() {
 										columns={columns}
 										dataSource={[]}
 										pagination={false}
-										rowKey={(record) => record.u}
+										rowKey={(record) => record.verb_1}
 									/>
 									<Table
 										size='small'
@@ -107,7 +108,7 @@ function DetailPage() {
 										columns={columns}
 										dataSource={[]}
 										pagination={false}
-										rowKey={(record) => record.u}
+										rowKey={(record) => record.verb_1}
 									/>
 								</Row>
 							</Panel>
