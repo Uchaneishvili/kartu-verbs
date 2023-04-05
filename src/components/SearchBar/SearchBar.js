@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./SearchBar.module.css";
+import { SearchOutlined } from "@ant-design/icons";
 import { Form } from "antd";
 
 const SearchBar = () => {
@@ -22,7 +23,15 @@ const SearchBar = () => {
 
   return (
     <div className={styles.searchContainer}>
+     
       <Form className={styles.searchForm}>
+      <button
+        onClick={handleSubmit}
+        type="submit"
+        className={styles.searchButton}
+      >
+        <SearchOutlined />
+      </button>
         <input
           className={styles.searchInput}
           type="text"
@@ -31,14 +40,6 @@ const SearchBar = () => {
           placeholder="Search any word"
           autoFocus
         />
-
-        <button
-          onClick={handleSubmit}
-          type="submit"
-          className={styles.searchButton}
-        >
-          Search
-        </button>
       </Form>
     </div>
   );

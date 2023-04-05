@@ -1,39 +1,31 @@
 /** @format */
 
 .StyledContainer {
-	width: 100%;
-	background-color: #cccccc38;
-	padding: 20px;
-	height: 15vh;
+	margin-top: 37px;
+  height: 10vh;
+  width: 100%;
+  background-color: #8e0726;
 }
 
 .StyledWrapper {
-	width: 100%;
-	margin: 0 auto;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	flex-direction: row;
-	flex-wrap: nowrap;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 10px 30px;
 }
 
 .StyledWrapper > ul {
-	list-style: none;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: flex-start;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
 }
 .StyledWrapper > ul > li {
-	color: #808784;
-	margin-top: 5px;
-	cursor: pointer;
-}
-.StyledWrapper > a {
-	color: #808784;
-}
-
-.StyledWrapper > p {
-	color: #f6f6f9;
-	font-size: 12px;
+	font-size: 16px;
+  color: #d7d7d7d4;
+  margin-top: 5px;
+  cursor: pointer;
+  margin-right: 15px;
 }
