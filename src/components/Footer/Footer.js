@@ -7,18 +7,12 @@ const Footer = () => {
     <div className={styles.StyledContainer}>
       <div className={styles.StyledWrapper}>
         <ul>
-          <li>about us</li>
+          <li>About us</li>
           <li>Authorization</li>
-        </ul>
-
-        <ul>
           <li>Terms and Conditions</li>
-          <li>Contracts</li>
         </ul>
-
         <ul>
-          <li>Contact</li>
-          <li>FAQ</li>
+          <li>Contact & FAQ</li>
         </ul>
       </div>
     </div>

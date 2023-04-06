@@ -7,6 +7,7 @@ import { Form } from 'antd';
 import { useList } from '../../hooks/TableDataLoader';
 import SearchSuggestion from '../SearchSuggestions/SearchSuggestions';
 import { useCallback } from 'react';
+import { SearchOutlined } from '@ant-design/icons';
 
 const SearchBar = () => {
 	const [searchTerm, setSearchTerm] = useState('');
@@ -69,7 +70,7 @@ LIMIT 10`;
 						zIndex: suggestionsOpen ? 102 : 0,
 					}}
 					className={styles.searchInput}
-					placeholder={'Search'}
+					placeholder='Search any word'
 					onChange={(value) => (value ? handleChange(value) : resetValues())}
 					onFocus={() => {
 						setSuggestionsOpen(true);
@@ -85,7 +86,7 @@ LIMIT 10`;
 						zIndex: suggestionsOpen ? 102 : 0,
 						position: suggestionsOpen ? 'relative' : 'initial',
 					}}>
-					Search
+					<SearchOutlined />
 				</button>
 
 				{suggestionsOpen && (
