@@ -1,0 +1,27 @@
+/** @format */
+
+.SearchSuggestion__result {
+	width: 40%;
+	max-height: 150px;
+	overflow-y: scroll;
+	position: absolute;
+	padding: 20px;
+	background: #ffffff;
+	box-sizing: border-box;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 6px;
+	list-style: none;
+	margin-bottom: 0;
+	z-index: 100;
+}
+
+img {
+	width: 45px;
+	height: 45px;
+}
+
+.totalCount {
+	font-size: 14px;
+	line-height: 20px;
+	color: #000000;
+}

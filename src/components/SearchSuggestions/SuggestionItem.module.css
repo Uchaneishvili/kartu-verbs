@@ -1,0 +1,77 @@
+/** @format */
+
+.container {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+figure {
+	width: 50px;
+	height: 50px;
+	background: #ffffff;
+	border: 1px solid #e6e7e8;
+	box-sizing: border-box;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 22px 0 0;
+}
+
+.description {
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+}
+
+.description:hover {
+	background-color: #e6e7e8;
+}
+.description__title {
+	font-weight: 500;
+	font-size: 14px;
+	color: #242424;
+}
+
+.description__properties {
+	display: flex;
+}
+
+.description__properties__price {
+	font-family: 'Helvetica Neue Caps';
+	font-size: 14px;
+	color: var(--jungle-green);
+}
+
+.description__properties__discountPrice {
+	font-family: 'Helvetica Neue Caps';
+	font-size: 14px;
+	color: var(--blood-orange);
+	text-decoration-line: line-through;
+}
+
+.description__properties__unit {
+	font-size: 14px;
+	color: #7f7f7f;
+}
+
+.container__quantity {
+	width: auto;
+	max-width: 100px;
+}
+
+.addToCart {
+	background: #ffffff;
+	border: 1px solid #007a3e;
+	box-sizing: border-box;
+	border-radius: 6px;
+	height: 40px;
+	width: 100px;
+	font-family: 'Helvetica Neue Caps';
+	touch-action: manipulation;
+	text-align: center;
+	color: #000000;
+	align-items: center;
+	justify-content: center;
+}
