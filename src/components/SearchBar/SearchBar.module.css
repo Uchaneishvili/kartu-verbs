@@ -11,39 +11,38 @@
 .searchForm {
 	height: 60px;
 	width: 600px;
-	border-radius: 25px;
 	background-color: #fff;
 	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
 	align-content: center;
 	display: flex;
-	padding-left: 10px;
+	border-radius: 20px;
 }
 
 .searchForm > input {
 	height: 100%;
 	width: 80%;
 	border: none;
+	border-radius: 20px 0 0 20px;
 	font-size: 16px;
 	box-sizing: border-box;
-	border-radius: 20px;
+	padding-left: 10px;
 }
 .searchForm > input:focus {
 	outline: none;
+	width: 80%;
 }
 
 .searchButton {
 	height: 100%;
 	width: 20%;
 	border: none;
-	color: white;
-	font-size: 25px;
+	color: #ccc;
 	cursor: pointer;
 	border: none;
+	border-radius: 20px;
 	font-size: 25px;
 	cursor: pointer;
-	background-color: transparent;
-	color: #ccc;
-	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+	background-color: #fff;
 }
 
 .background {

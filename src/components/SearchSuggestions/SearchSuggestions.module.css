@@ -5,6 +5,7 @@
 	max-height: 150px;
 	overflow-y: scroll;
 	position: absolute;
+	margin-top: 70px;
 	padding: 20px;
 	background: #ffffff;
 	box-sizing: border-box;
