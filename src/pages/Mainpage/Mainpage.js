@@ -14,21 +14,8 @@ function Mainpage() {
 			<Header search={false} />
 
 			<Page>
-				{/* <div className={styles.searchContainer}>
-          <h1>ქართული ზმნები</h1>
-
-          <div className={styles.searchSection}>
-            <h2>Search For A Verb</h2>
-            <SearchBar />
-            <div className={styles.buttonContainer}>
-              <button>One Verb</button>
-
-              <button>All Verb</button>
-            </div>
-          </div>
-        </div> */}
 				<main>
-					<div style={{ padding: '20px' }}>
+					<div>
 						<div className={styles.mainTitleContainer}>
 							<h1>ქართული ზმნები</h1>
 						</div>
@@ -44,7 +31,7 @@ function Mainpage() {
 							<button>All Verb</button>
 						</div>
 					</div>
-					<div style={{ height: '30%', width: '100%' }}></div>
+					<div></div>
 				</main>
 			</Page>
 			<Footer />
