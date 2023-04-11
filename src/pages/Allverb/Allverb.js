@@ -36,20 +36,33 @@ const Allverb = () => {
 	];
 
 	return (
-		<Page>
-			<Header />
-			<Row style={{ justifyContent: 'center' }}>
-				<Table
-					size='medium'
-					bordered={false}
-					columns={columns}
-					dataSource={list}
-					pagination={false}
-					rowKey={(record) => record.verb_1}
-				/>
-			</Row>
-			<Footer />
-		</Page>
+		<div>
+			<Page>
+				<Header />
+				<div
+					style={{
+						height: '100%',
+					}}>
+					<div
+						style={{
+							display: 'flex',
+							height: '100%',
+							justifyContent: 'center',
+						}}>
+						<Table
+							size='medium'
+							bordered={false}
+							columns={columns}
+							dataSource={list}
+							pagination={false}
+							rowKey={(record) => record.verb_1}
+						/>
+					</div>
+				</div>
+
+				<Footer />
+			</Page>
+		</div>
 	);
 };
 

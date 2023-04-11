@@ -115,194 +115,197 @@ function DetailPage() {
 	return (
 		<>
 			<Header search={true} />
-			<Page>
-				<div className='page-container'>
-					<div className='inner-container'>
-						<Collapse
-							accordion
-							defaultActiveKey={['1']}
-							style={{ width: '100%' }}>
-							<Panel
-								header='Present Subseries'
-								key='1'>
-								<Row style={{ justifyContent: 'space-between' }}>
-									<Card
-										title='Present indicative'
-										bordered={false}
-										style={{
-											width: 300,
-										}}>
-										<Table
-											size='small'
+			<main>
+				<Page>
+					<div className='page-container'>
+						<div className='inner-container'>
+							<Collapse
+								accordion
+								defaultActiveKey={['1']}
+								style={{ width: '100%' }}>
+								<Panel
+									header='Present Subseries'
+									key='1'>
+									<Row style={{ justifyContent: 'space-between' }}>
+										<Card
+											title='Present indicative'
 											bordered={false}
-											columns={columns}
-											dataSource={present}
-											pagination={false}
-											rowKey={(record) => record.verb_1}
-										/>
-									</Card>
-									<Card
-										title='Present Conjunctive'
-										bordered={false}
-										style={{
-											width: 300,
-										}}>
-										<Table
-											size='small'
+											style={{
+												width: 300,
+											}}>
+											<Table
+												size='small'
+												bordered={false}
+												columns={columns}
+												dataSource={present}
+												pagination={false}
+												rowKey={(record) => record.verb_1}
+											/>
+										</Card>
+										<Card
+											title='Present Conjunctive'
 											bordered={false}
-											columns={columns}
-											dataSource={presentConjunctive}
-											pagination={false}
-											rowKey={(record) => record.verb_1}
-										/>
-									</Card>
-									<Card
-										title='Present Perfect'
-										bordered={false}
-										style={{
-											width: 300,
-										}}>
-										<Table
-											size='small'
+											style={{
+												width: 300,
+											}}>
+											<Table
+												size='small'
+												bordered={false}
+												columns={columns}
+												dataSource={presentConjunctive}
+												pagination={false}
+												rowKey={(record) => record.verb_1}
+											/>
+										</Card>
+										<Card
+											title='Present Perfect'
 											bordered={false}
-											columns={columns}
-											dataSource={presentPerfect}
-											pagination={false}
-											rowKey={(record) => record.verb_1}
-										/>
-									</Card>
-								</Row>
-							</Panel>
+											style={{
+												width: 300,
+											}}>
+											<Table
+												size='small'
+												bordered={false}
+												columns={columns}
+												dataSource={presentPerfect}
+												pagination={false}
+												rowKey={(record) => record.verb_1}
+											/>
+										</Card>
+									</Row>
+								</Panel>
 
-							<Panel
-								header=' Future Subseries '
-								key='2'>
-								<Row style={{ justifyContent: 'space-between' }}>
-									<Card
-										title='Future'
-										bordered={false}
-										style={{
-											width: 300,
-										}}>
-										<Table
-											size='small'
+								<Panel
+									header=' Future Subseries '
+									key='2'>
+									<Row style={{ justifyContent: 'space-between' }}>
+										<Card
+											title='Future'
 											bordered={false}
-											columns={columns}
-											dataSource={future}
-											pagination={false}
-											rowKey={(record) => record.verb_1}
-										/>
-									</Card>
-									<Card
-										title='conditional'
-										bordered={false}
-										style={{
-											width: 300,
-										}}>
-										<Table
-											size='small'
+											style={{
+												width: 300,
+											}}>
+											<Table
+												size='small'
+												bordered={false}
+												columns={columns}
+												dataSource={future}
+												pagination={false}
+												rowKey={(record) => record.verb_1}
+											/>
+										</Card>
+										<Card
+											title='conditional'
 											bordered={false}
-											columns={columns}
-											dataSource={conditional}
-											pagination={false}
-											rowKey={(record) => record.verb_1}
-										/>
-									</Card>
-									<Card
-										title='Future Conjuctive'
-										bordered={false}
-										style={{
-											width: 300,
-										}}>
-										<Table
-											size='small'
+											style={{
+												width: 300,
+											}}>
+											<Table
+												size='small'
+												bordered={false}
+												columns={columns}
+												dataSource={conditional}
+												pagination={false}
+												rowKey={(record) => record.verb_1}
+											/>
+										</Card>
+										<Card
+											title='Future Conjuctive'
 											bordered={false}
-											columns={columns}
-											dataSource={futureConjunctive}
-											pagination={false}
-											rowKey={(record) => record.verb_1}
-										/>
-									</Card>
-								</Row>
-							</Panel>
+											style={{
+												width: 300,
+											}}>
+											<Table
+												size='small'
+												bordered={false}
+												columns={columns}
+												dataSource={futureConjunctive}
+												pagination={false}
+												rowKey={(record) => record.verb_1}
+											/>
+										</Card>
+									</Row>
+								</Panel>
 
-							<Panel
-								header='Aoris Series'
-								key='3'>
-								<Row style={{ justifyContent: 'space-between' }}>
-									<Card
-										title='Aorist'
-										bordered={false}
-										style={{
-											width: 300,
-										}}>
-										<Table
-											size='small'
+								<Panel
+									header='Aoris Series'
+									key='3'>
+									<Row style={{ justifyContent: 'space-between' }}>
+										<Card
+											title='Aorist'
 											bordered={false}
-											columns={columns}
-											dataSource={aorist}
-											pagination={false}
-											rowKey={(record) => record.verb_1}
-										/>
-									</Card>
-									<Card
-										title='Optative'
-										bordered={false}
-										style={{
-											width: 300,
-										}}>
-										<Table
-											size='small'
+											style={{
+												width: 300,
+											}}>
+											<Table
+												size='small'
+												bordered={false}
+												columns={columns}
+												dataSource={aorist}
+												pagination={false}
+												rowKey={(record) => record.verb_1}
+											/>
+										</Card>
+										<Card
+											title='Optative'
 											bordered={false}
-											columns={columns}
-											dataSource={optative}
-											pagination={false}
-											rowKey={(record) => record.verb_1}
-										/>
-									</Card>
-								</Row>
-							</Panel>
+											style={{
+												width: 300,
+											}}>
+											<Table
+												size='small'
+												bordered={false}
+												columns={columns}
+												dataSource={optative}
+												pagination={false}
+												rowKey={(record) => record.verb_1}
+											/>
+										</Card>
+									</Row>
+								</Panel>
 
-							<Panel
-								header='Perfect Indicative'
-								key='4'>
-								<Row style={{ justifyContent: 'space-between' }}>
-									<Card
-										title='Imperfect'
-										bordered={false}
-										style={{
-											width: 300,
-										}}>
-										<Table
-											size='small'
+								<Panel
+									header='Perfect Indicative'
+									key='4'>
+									<Row style={{ justifyContent: 'space-between' }}>
+										<Card
+											title='Imperfect'
 											bordered={false}
-											columns={columns}
-											dataSource={imperfect}
-											pagination={false}
-											rowKey={(record) => record.verb_1}
-										/>
-									</Card>
-									<Card
-										title='Past Perfect'
-										bordered={false}
-										style={{
-											width: 300,
-										}}>
-										<Table
-											size='small'
+											style={{
+												width: 300,
+											}}>
+											<Table
+												size='small'
+												bordered={false}
+												columns={columns}
+												dataSource={imperfect}
+												pagination={false}
+												rowKey={(record) => record.verb_1}
+											/>
+										</Card>
+										<Card
+											title='Past Perfect'
 											bordered={false}
-											columns={columns}
-											dataSource={pastPerfect}
-											pagination={false}
-											rowKey={(record) => record.verb_1}
-										/>
-									</Card>
-								</Row>
-							</Panel>
-						</Collapse>
+											style={{
+												width: 300,
+											}}>
+											<Table
+												size='small'
+												bordered={false}
+												columns={columns}
+												dataSource={pastPerfect}
+												pagination={false}
+												rowKey={(record) => record.verb_1}
+											/>
+										</Card>
+									</Row>
+								</Panel>
+							</Collapse>
+						</div>
 					</div>
-				</div>
-			</Page>
+				</Page>
+			</main>
+
 			<Footer />
 		</>
 	);
