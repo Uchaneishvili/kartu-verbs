@@ -36,7 +36,7 @@ function Mainpage() {
               <button>All Verb</button>
             </div>
           </div>
-          <div style={{padding:"10px"}}>
+          <div style={{padding:"20px"}}>
             <Abgd />
           </div>
         </main>
