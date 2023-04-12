@@ -5,6 +5,7 @@ import Page from "../../components/page";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import { Abgd } from "../../icons/abgd";
 
 import { MainTitle } from "../../icons/mainTitle";
 
@@ -35,7 +36,9 @@ function Mainpage() {
               <button>All Verb</button>
             </div>
           </div>
-          <div></div>
+          <div style={{padding:"10px"}}>
+            <Abgd />
+          </div>
         </main>
       </Page>
       <Footer />
