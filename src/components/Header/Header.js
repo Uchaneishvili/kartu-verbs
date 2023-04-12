@@ -5,6 +5,7 @@ import styles from "./Header.module.css";
 import { MenuOutlined } from "@ant-design/icons";
 import { SearchBarIcon } from "../../icons/searchBarIcon";
 import { Form } from "antd";
+import { Logo } from "../../icons/logo";
 
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +20,9 @@ function Header(props) {
           navigate("/");
         }}
       >
-        KartuVerbs
+        <div>
+          <Logo />
+        </div>
       </div>
       <ul className={styles.navUl}>
         <li>Home</li>
