@@ -1,7 +1,7 @@
 /** @format */
 
 import React from 'react';
-import { Table, Row } from 'antd';
+import { Table } from 'antd';
 import { useList } from '../../hooks/TableDataLoader.js';
 import Page from '../../components/page';
 import Header from '../../components/Header/Header';
