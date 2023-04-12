@@ -8,8 +8,8 @@
 
 .searchContainer {
 	background-color: #8e0727;
-	padding-top: 25px;
-	padding-bottom: 55px;
+	padding-top: 15px;
+	padding-bottom: 65px;
 }
 
 .searchTitleContainer {
@@ -17,6 +17,9 @@
 	justify-content: center;
 	color: white;
 	padding-bottom: 10px;
+}
+.searchTitleContainer > h2 {
+	font-size: 35px;
 }
 
 .buttonContainer {
