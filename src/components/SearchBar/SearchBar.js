@@ -62,6 +62,17 @@ LIMIT 10`;
   return (
     <div className={styles.searchContainer}>
       <Form className={styles.searchForm}>
+        <button
+          onClick={handleSubmit}
+          type="submit"
+          className={styles.searchButton}
+          style={{
+            zIndex: suggestionsOpen ? 102 : 0,
+            position: suggestionsOpen ? "relative" : "initial",
+          }}
+        >
+          <SearchOutlined />
+        </button>
         <input
           id="search"
           name="searchText"
@@ -76,19 +87,6 @@ LIMIT 10`;
             setSuggestionsOpen(true);
           }}
         />
-        <button
-          onClick={handleSubmit}
-          type="submit"
-          className={styles.searchButton}
-          style={{
-            borderTopLeftRadius: "0px",
-            borderBottomLeftRadius: "0px",
-            zIndex: suggestionsOpen ? 102 : 0,
-            position: suggestionsOpen ? "relative" : "initial",
-          }}
-        >
-          <SearchOutlined />
-        </button>
 
         {suggestionsOpen && (
           <SearchSuggestion
