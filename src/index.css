@@ -1,11 +1,15 @@
 /** @format */
 body {
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: 'Nunito', sans-serif;
 	background-color: #f8f8f9;
 }
 
 #root {
 	height: 100vh;
+}
+
+h2 {
+	font-weight: 400;
 }
 
 .page-wrapper {
