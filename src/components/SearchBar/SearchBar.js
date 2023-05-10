@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SearchBar.module.css";
 import { Form } from "antd";
@@ -9,7 +9,11 @@ import SearchSuggestion from "../SearchSuggestions/SearchSuggestions";
 import { useCallback } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 
+import detailsPageCtx from "../../store/DetailsPageCtx/detailsPageCtx";
+
 const SearchBar = () => {
+  const detailsContext = useContext(detailsPageCtx);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestionsOpen, setSuggestionsOpen] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
@@ -19,7 +23,6 @@ const SearchBar = () => {
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
-
     getSuggestions(event.target.value);
     if (event.target.value) {
       setSuggestionsOpen(true);
@@ -51,6 +54,8 @@ LIMIT 10`;
   const handleSubmit = (event) => {
     event.preventDefault();
     navigate("/DetailPage");
+    //forward searchTerm to DetailsPage
+    detailsContext.setSearchWord(searchTerm);
   };
 
   const resetValues = () => {
