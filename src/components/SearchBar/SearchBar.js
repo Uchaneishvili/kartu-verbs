@@ -28,7 +28,6 @@ const SearchBar = () => {
 		}
 	};
 
-	console.log(searchTerm);
 	const query = `PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX n1: <file:///home/ferre/data/ontologies/Kartu-verbs/>
 SELECT DISTINCT ?verb_1 ?Georgian_form_103
