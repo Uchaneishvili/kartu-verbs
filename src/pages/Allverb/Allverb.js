@@ -120,7 +120,7 @@ LIMIT 20}}`
 											style={{
 												marginTop: '5px',
 												marginBottom: '5px',
-												backgroundColor: 'pink',
+												backgroundColor: '#fe7ef3',
 												width: '25px',
 											}}
 										/>
@@ -140,7 +140,7 @@ LIMIT 20}}`
 											style={{
 												marginTop: '5px',
 												marginBottom: '5px',
-												backgroundColor: 'black',
+												backgroundColor: '#000000',
 												width: '25px',
 											}}
 										/>
@@ -160,7 +160,7 @@ LIMIT 20}}`
 											style={{
 												marginTop: '5px',
 												marginBottom: '5px',
-												backgroundColor: 'red',
+												backgroundColor: '#ff1d25',
 												width: '25px',
 											}}
 										/>
@@ -180,7 +180,7 @@ LIMIT 20}}`
 											style={{
 												marginTop: '5px',
 												marginBottom: '5px',
-												backgroundColor: 'blue',
+												backgroundColor: '#0001eb',
 												width: '25px',
 											}}
 										/>
@@ -200,7 +200,7 @@ LIMIT 20}}`
 											style={{
 												marginTop: '5px',
 												marginBottom: '5px',
-												backgroundColor: 'brown',
+												backgroundColor: '#804008',
 												width: '25px',
 											}}
 										/>
