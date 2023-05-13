@@ -10,15 +10,15 @@ export default class FormatData {
 
 	static divideWord(val) {
 		if (val) {
-			return val.slice(12).replace(/-/g, '');
+			return val.slice(3).replace(/-/g, '');
 		}
 		return '';
 	}
 
 	static getSearchSuggestion(val) {
 		if (val) {
-			const components = val.split('_'); // split the string into an array of components
-			return components[1].replace(/-/g, ''); // return the second component without hyphens
+			const components = val.split('_');
+			return components[1].replace(/-/g, '');
 		}
 		return '';
 	}
