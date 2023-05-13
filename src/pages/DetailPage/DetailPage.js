@@ -93,19 +93,19 @@ const DetailPage = () => {
 			render: (record) => {
 				return (
 					<div style={{ overflow: 'hidden' }}>
-						<span style={{ color: '#000' }}>
+						<span style={{ color: '#fe7ef3' }}>
 							{FormatData.divideWord(record.preverb_54)}
 						</span>
-						<span style={{ color: '#FF0000' }}>
+						<span style={{ color: '#000000' }}>
 							{FormatData.divideWord(record.preradical_58)}
 						</span>
-						<span style={{ color: '#FF7F00' }}>
+						<span style={{ color: '#ff1d25' }}>
 							{FormatData.divideWord(record.root_62)}
 						</span>
-						<span style={{ color: '#FFFF00' }}>
+						<span style={{ color: '#0001eb' }}>
 							{FormatData.divideWord(record.postradical_66)}
 						</span>
-						<span style={{ color: '#00FF00' }}>
+						<span style={{ color: '#804008' }}>
 							{FormatData.divideWord(record.pFSF_70)}
 						</span>
 						<span style={{ color: '#0000FF' }}>
