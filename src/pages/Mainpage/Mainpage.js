@@ -8,8 +8,11 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import { Abgd } from '../../icons/abgd';
 import { MainTitle } from '../../icons/mainTitle';
 import styles from './MainPage.module.css';
+import { useNavigate } from 'react-router-dom';
 
 function Mainpage() {
+	const navigate = useNavigate();
+
 	return (
 		<>
 			<Header search={false} />
@@ -30,7 +33,12 @@ function Mainpage() {
 					<div className={styles.buttonContainer}>
 						<button>One Verb</button>
 
-						<button>All Verb</button>
+						<button
+							onClick={() => {
+								navigate('/allVerb');
+							}}>
+							All Verb
+						</button>
 					</div>
 				</div>
 				<div style={{ padding: '20px' }}>

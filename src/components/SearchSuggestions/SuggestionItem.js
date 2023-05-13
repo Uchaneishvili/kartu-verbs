@@ -3,13 +3,21 @@
 import React from 'react';
 import styles from './SuggestionItem.module.css';
 import FormatData from '../../utils/FormatData';
+import { useNavigate } from 'react-router';
 
 const SuggestionItem = (props) => {
+	const navigate = useNavigate();
 	return (
 		<div className={styles.container}>
 			<div
 				className={styles.description}
-				onClick={() => console.log('Here should be redirecting')}>
+				onClick={() =>
+					navigate(
+						`detailPage/${FormatData.getSearchSuggestion(
+							props.suggestion.verb_1
+						)}`
+					)
+				}>
 				<div className={styles.description__title}>
 					{FormatData.slicedData(props.suggestion.Georgian_form_103)}
 				</div>

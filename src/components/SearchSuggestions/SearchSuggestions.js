@@ -19,6 +19,7 @@ const SearchSuggestions = (props) => {
 					{props.suggestion.map((suggestion) => (
 						<li key={suggestion.verb_1}>
 							<SuggestionItem
+								handleSubmit={props.handleSubmit}
 								suggestion={suggestion}
 								onNavigate={() => props.onClose()}
 							/>
