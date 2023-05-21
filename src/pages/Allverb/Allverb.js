@@ -11,28 +11,15 @@ const { Option } = Select;
 
 const Allverb = () => {
 	const [list] = useList(
-		`PREFIX p: <http://www.wikidata.org/prop/>
-PREFIX n1: <file:///home/ferre/data/ontologies/Kartu-verbs/>
-SELECT * WHERE { SERVICE
-<http://servolis.irisa.fr:3737/kartuverbs/sparql> { SELECT DISTINCT
-?verb_1 ?Georgian_form_38 ?tense_50 ?preverb_54 ?preradical_58 ?root_62
-?postradical_66 ?pFSF_70 ?ending_74 ?English_infinitive_78
-?French_infinitive_82 ?Georgian_infinitive_90
-WHERE { ?verb_1 a n1:verb .
-         ?verb_1 n1:Georgian_form ?Georgian_form_38 .
-         ?verb_1 n1:person n1:third .
-         ?verb_1 n1:number n1:singular .
-         ?verb_1 n1:tense ?tense_50 .
-         ?verb_1 n1:preverb ?preverb_54 .
-         ?verb_1 n1:preradical ?preradical_58 .
-         ?verb_1 n1:root ?root_62 .
-         ?verb_1 n1:postradical ?postradical_66 .
-         ?verb_1 n1:pFSF ?pFSF_70 .
-         ?verb_1 n1:ending ?ending_74 .
-         ?verb_1 n1:English_infinitive ?English_infinitive_78 .
-         ?verb_1 n1:French_infinitive ?French_infinitive_82 .
-         ?verb_1 n1:Georgian_infinitive ?Georgian_infinitive_90 . }
-LIMIT 20}}`
+		`PREFIX n1: <file:///home/achiko/clarino/2022/>
+SELECT DISTINCT ?inflected_verb_1 ?vn2_103 ?surface_form_140 ?number_177 ?person_214 ?tense_in_paradigm_251
+WHERE { ?inflected_verb_1 a n1:inflected_verb .
+        ?inflected_verb_1 n1:vn2 ?vn2_103 .
+        ?inflected_verb_1 n1:surface_form ?surface_form_140 .
+        ?inflected_verb_1 n1:number ?number_177 .
+        ?inflected_verb_1 n1:person ?person_214 .
+        ?inflected_verb_1 n1:tense_in_paradigm ?tense_in_paradigm_251 . }
+LIMIT 200`
 	);
 
 	console.log(list);
