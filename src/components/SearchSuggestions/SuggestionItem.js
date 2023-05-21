@@ -13,13 +13,14 @@ const SuggestionItem = (props) => {
 				className={styles.description}
 				onClick={() =>
 					navigate(
-						`detailPage/${FormatData.getSearchSuggestion(
-							props.suggestion.verb_1
-						)}`
+						`detailPage/${FormatData.slicedData(props.suggestion.root_177)}`
 					)
 				}>
 				<div className={styles.description__title}>
-					{FormatData.slicedData(props.suggestion.Georgian_form_103)}
+					{FormatData.convertLatinToGeorgian(
+						FormatData.slicedData(props.suggestion.surface_form_140)
+					)}{' '}
+					/ {FormatData.slicedData(props.suggestion.surface_form_140)}
 				</div>
 				<div className={styles.description__properties}>
 					<span className={styles.description__properties__unit}></span>

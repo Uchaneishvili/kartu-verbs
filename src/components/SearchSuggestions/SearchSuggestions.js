@@ -17,7 +17,7 @@ const SearchSuggestions = (props) => {
 			{props.visible && props.suggestion.length ? (
 				<ul className={styles.SearchSuggestion__result}>
 					{props.suggestion.map((suggestion) => (
-						<li key={suggestion.verb_1}>
+						<li key={suggestion.inflected_verb_1}>
 							<SuggestionItem
 								handleSubmit={props.handleSubmit}
 								suggestion={suggestion}

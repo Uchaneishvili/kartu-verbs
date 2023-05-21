@@ -28,15 +28,13 @@ const SearchBar = () => {
 		}
 	};
 
-	const query = `PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX n1: <file:///home/ferre/data/ontologies/Kartu-verbs/>
-SELECT DISTINCT ?verb_1 ?Georgian_form_103
-WHERE { ?verb_1 rdfs:label ?constr_label3 .
-        FILTER ( REGEX(str(?constr_label3), "${FormatData.convertGeorgianToLatin(
-					searchTerm
-				)}", 'i') )
-        ?verb_1 a n1:verb .
-        ?verb_1 n1:Georgian_form ?Georgian_form_103 . }
+	const query = `PREFIX text: <http://jena.apache.org/text#>
+PREFIX n1: <file:///home/achiko/clarino/2022/>
+SELECT DISTINCT ?inflected_verb_1 ?surface_form_140 ?root_177
+WHERE { ?inflected_verb_1 text:query "${searchTerm + '*'}" .
+        ?inflected_verb_1 a n1:inflected_verb .
+        ?inflected_verb_1 n1:surface_form ?surface_form_140 .
+        ?inflected_verb_1 n1:root ?root_177 . }
 LIMIT 10`;
 
 	const [list] = useList(query);
@@ -54,7 +52,7 @@ LIMIT 10`;
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		navigate(`detailPage/${FormatData.getSearchSuggestion(list[0].verb_1)}`);
+		navigate(`detailPage/${FormatData.getSearchSuggestion(list[0].root_177)}`);
 	};
 
 	const resetValues = () => {
