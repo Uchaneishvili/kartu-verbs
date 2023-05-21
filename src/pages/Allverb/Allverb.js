@@ -6,63 +6,82 @@ import { useList } from '../../hooks/TableDataLoader.js';
 import Page from '../../components/page';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import FormatData from '../../utils/FormatData.js';
+import FormatData from '../../utils/FormatData';
 const { Option } = Select;
 
 const Allverb = () => {
 	const [list] = useList(
 		`PREFIX n1: <file:///home/achiko/clarino/2022/>
-SELECT DISTINCT ?inflected_verb_1 ?vn2_103 ?surface_form_140 ?number_177 ?person_214 ?tense_in_paradigm_251
+SELECT DISTINCT ?inflected_verb_1 ?vn2_103 ?tense_in_paradigm_251 ?person_288 ?number_325
 WHERE { ?inflected_verb_1 a n1:inflected_verb .
         ?inflected_verb_1 n1:vn2 ?vn2_103 .
-        ?inflected_verb_1 n1:surface_form ?surface_form_140 .
-        ?inflected_verb_1 n1:number ?number_177 .
-        ?inflected_verb_1 n1:person ?person_214 .
-        ?inflected_verb_1 n1:tense_in_paradigm ?tense_in_paradigm_251 . }
+        ?inflected_verb_1 n1:tense_in_paradigm ?tense_in_paradigm_251 .
+        ?inflected_verb_1 n1:person ?person_288 .
+        ?inflected_verb_1 n1:number ?number_325 . }
 LIMIT 200`
 	);
-
-	console.log(list);
 
 	const columns = [
 		{
 			title: 'Georgian Infinitive',
-			dataIndex: 'Georgian_form_38',
+			dataIndex: 'vn2_103',
 			key: 'geo',
+			width: '350px',
 			render: (val) => {
-				return val?.slice(3);
+				return FormatData.convertLatinToGeorgian(val?.slice(3));
 			},
 		},
+
 		{
-			title: 'Georgian Infinitive',
-			dataIndex: 'verb_1',
-			key: 'geo',
-			render: (val) => {
-				return FormatData.divideWord(val);
-			},
-		},
-		{
-			title: 'English Infinitive',
-			dataIndex: 'tense_50',
+			title: 'Latin',
+			dataIndex: 'vn2_103',
 			key: 'eng',
+			width: '350px',
+
 			render: (val) => {
 				return val?.slice(3);
 			},
 		},
 		{
-			title: 'Georgian Infinitive',
-			dataIndex: 'Georgian_infinitive_105',
-			key: 'geo',
+			title: 'Tense',
+			dataIndex: 'tense_in_paradigm_251',
+			key: 'tense',
+			width: '350px',
+
 			render: (val) => {
 				return val?.slice(3);
 			},
 		},
+
 		{
-			title: 'English Infinitive',
-			dataIndex: 'English_infinitive_1',
-			key: 'eng',
+			title: 'Number',
+			dataIndex: 'number_325',
+			key: 'number',
+			width: '350px',
+
 			render: (val) => {
-				return val?.slice(3);
+				if (val === 'n1:sg') {
+					return 'Singular';
+				} else {
+					return 'Plural';
+				}
+			},
+		},
+
+		{
+			title: 'Person',
+			dataIndex: 'person_288',
+			key: 'Person',
+			width: '350px',
+
+			render: (val) => {
+				if (val === 'n1:1_person') {
+					return 'I';
+				} else if (val === 'n1:2_person') {
+					return 'II';
+				} else {
+					return 'III';
+				}
 			},
 		},
 	];
@@ -288,7 +307,7 @@ LIMIT 200`
 								bordered={false}
 								columns={columns}
 								dataSource={list}
-								pagination={false}
+								pagination={true}
 								rowKey={(record) => record.verb_1}
 							/>
 						</Card>

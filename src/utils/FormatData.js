@@ -66,4 +66,68 @@ export default class FormatData {
 
 		return latinText;
 	}
+
+	static convertLatinToGeorgian(latinText) {
+		var latinToGeorgianMap = {
+			a: 'ა',
+			b: 'ბ',
+			g: 'გ',
+			d: 'დ',
+			e: 'ე',
+			v: 'ვ',
+			z: 'ზ',
+			t: 'თ',
+			i: 'ი',
+			"k'": 'კ',
+			l: 'ლ',
+			m: 'მ',
+			n: 'ნ',
+			o: 'ო',
+			"p'": 'პ',
+			zh: 'ჟ',
+			r: 'რ',
+			s: 'ს',
+			"t'": 'ტ',
+			u: 'უ',
+			p: 'ფ',
+			k: 'ქ',
+			gh: 'ღ',
+			"q'": 'ყ',
+			sh: 'შ',
+			ch: 'ჩ',
+			ts: 'ც',
+			dz: 'ძ',
+			"ts'": 'წ',
+			"ch'": 'ჭ',
+			kh: 'ხ',
+			j: 'ჯ',
+			h: 'ჰ',
+		};
+
+		var georgianText = latinText.replace(
+			/ch|zh|gh|sh|ts|dz|kh|./g,
+			function (match) {
+				switch (match) {
+					case 'zh':
+						return 'ჟ';
+					case 'gh':
+						return 'ღ';
+					case 'sh':
+						return 'შ';
+					case 'ch':
+						return 'ჩ';
+					case 'ts':
+						return 'ც';
+					case 'dz':
+						return 'ძ';
+					case 'kh':
+						return 'ხ';
+					default:
+						return latinToGeorgianMap[match] || match;
+				}
+			}
+		);
+
+		return georgianText;
+	}
 }
