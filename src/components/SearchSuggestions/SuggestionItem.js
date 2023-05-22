@@ -13,7 +13,7 @@ const SuggestionItem = (props) => {
 				className={styles.description}
 				onClick={() =>
 					navigate(
-						`detailPage/${FormatData.slicedData(props.suggestion.root_177)}`
+						`detailPage/${FormatData.slicedData(props.suggestion.vn2_103)}`
 					)
 				}>
 				<div className={styles.description__title}>
