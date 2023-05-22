@@ -1,323 +1,373 @@
 /** @format */
 
-import React from 'react';
-import { Table, Card, Divider, Radio, Select, Input } from 'antd';
-import { useList } from '../../hooks/TableDataLoader.js';
-import Page from '../../components/page';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
-import FormatData from '../../utils/FormatData';
+import { React, useState } from "react";
+import { Table, Card, Divider, Radio, Select, Input } from "antd";
+import { useList } from "../../hooks/TableDataLoader.js";
+import Page from "../../components/page";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import FormatData from "../../utils/FormatData";
 const { Option } = Select;
 
 const Allverb = () => {
-	const [list] = useList(
-		`PREFIX n1: <file:///home/achiko/clarino/2022/>
+  const [value, setValue] = useState("3sg");
+  const radioHandler = (e) => {
+    setValue(e.target.value);
+    console.log(value[0]);
+  };
+  const [list] = useList(
+    `PREFIX n1: <file:///home/achiko/clarino/2022/>
 SELECT DISTINCT ?inflected_verb_1 ?vn2_103 ?tense_in_paradigm_251 ?person_288 ?number_325
 WHERE { ?inflected_verb_1 a n1:inflected_verb .
         ?inflected_verb_1 n1:vn2 ?vn2_103 .
         ?inflected_verb_1 n1:tense_in_paradigm ?tense_in_paradigm_251 .
         ?inflected_verb_1 n1:person ?person_288 .
-        ?inflected_verb_1 n1:number ?number_325 . }
+        ?inflected_verb_1 n1:number ?number_325 .
+		FILTER ( ?person_288 = n1:${value[0]}_person )
+		?inflected_verb_1 n1:number n1:${value[1] + value[2]} .
+		?inflected_verb_1 n1:tense_in_paradigm n1:present . 
+	 }
 LIMIT 200`
-	);
+  );
 
-	const columns = [
-		{
-			title: 'Georgian Infinitive',
-			dataIndex: 'vn2_103',
-			key: 'geo',
-			width: '350px',
-			render: (val) => {
-				return FormatData.convertLatinToGeorgian(val?.slice(3));
-			},
-		},
+  /*  
+FILTER ( ?person_288 = n1:1_person )
 
-		{
-			title: 'Latin',
-			dataIndex: 'vn2_103',
-			key: 'eng',
-			width: '350px',
+        ?inflected_verb_1 n1:person n1:1_person .
 
-			render: (val) => {
-				return val?.slice(3);
-			},
-		},
-		{
-			title: 'Tense',
-			dataIndex: 'tense_in_paradigm_251',
-			key: 'tense',
-			width: '350px',
 
-			render: (val) => {
-				return val?.slice(3);
-			},
-		},
+  ?inflected_verb_1 n1:number n1:pl .
 
-		{
-			title: 'Number',
-			dataIndex: 'number_325',
-			key: 'number',
-			width: '350px',
+?inflected_verb_1 n1:tense_in_paradigm <file:///home/achiko/clarino/2022/conj-perfect> . 
 
-			render: (val) => {
-				if (val === 'n1:sg') {
-					return 'Singular';
-				} else {
-					return 'Plural';
-				}
-			},
-		},
+*/
+  const tenses = [
+    "aorist ",
+    "optative ",
+    "imperfect ",
+    "perfect ",
+    "present ",
+    "conditional",
+    "future ",
+    "conj-perfect",
+    "conj-present ",
+    "pluperfect ",
+    "conj-future",
+  ];
 
-		{
-			title: 'Person',
-			dataIndex: 'person_288',
-			key: 'Person',
-			width: '350px',
+  const columns = [
+    {
+      title: "Georgian Infinitive",
+      dataIndex: "vn2_103",
+      key: "geo",
+      width: "350px",
+      render: (val) => {
+        return FormatData.convertLatinToGeorgian(val?.slice(3));
+      },
+    },
 
-			render: (val) => {
-				if (val === 'n1:1_person') {
-					return 'I';
-				} else if (val === 'n1:2_person') {
-					return 'II';
-				} else {
-					return 'III';
-				}
-			},
-		},
-	];
+    {
+      title: "Latin",
+      dataIndex: "vn2_103",
+      key: "eng",
+      width: "350px",
 
-	return (
-		<div>
-			<Page>
-				<Header />
+      render: (val) => {
+        return val?.slice(3);
+      },
+    },
+    {
+      title: "Tense",
+      dataIndex: "tense_in_paradigm_251",
+      key: "tense",
+      width: "350px",
 
-				<div
-					style={{
-						height: '100%',
-						display: 'flex',
-						paddingTop: '20px',
-						flexDirection: 'row',
-						flexWrap: 'nowrap',
-						justifyContent: 'space-around',
-					}}>
-					<div style={{ width: '300px', backgroundColor: '#ececed' }}>
-						<Card style={{ height: '100%', backgroundColor: '#ececed' }}>
-							<div style={{ height: '100%' }}>
-								<div
-									style={{
-										backgroundColor: 'white',
-										display: 'flex',
-										flexDirection: 'row',
-										alignContent: 'center',
-										flexWrap: 'nowrap',
-										justifyContent: 'space-around',
-										borderRadius: '5px',
-									}}>
-									<div
-										style={{
-											display: 'flex',
-											flexWrap: 'nowrap',
-											flexDirection: 'column',
-											alignItems: 'center',
-											width: '50px',
-										}}>
-										<Card
-											size='small'
-											style={{
-												marginTop: '5px',
-												marginBottom: '5px',
-												backgroundColor: '#fe7ef3',
-												width: '25px',
-											}}
-										/>
-										<div style={{ fontSize: '10px' }}>Preradical</div>
-									</div>
+      render: (val) => {
+        return val?.slice(3);
+      },
+    },
 
-									<div
-										style={{
-											display: 'flex',
-											flexWrap: 'nowrap',
-											flexDirection: 'column',
-											alignItems: 'center',
-											width: '50px',
-										}}>
-										<Card
-											size='small'
-											style={{
-												marginTop: '5px',
-												marginBottom: '5px',
-												backgroundColor: '#000000',
-												width: '25px',
-											}}
-										/>
-										<div style={{ fontSize: '10px' }}>Preverb</div>
-									</div>
+    {
+      title: "Number",
+      dataIndex: "number_325",
+      key: "number",
+      width: "350px",
 
-									<div
-										style={{
-											display: 'flex',
-											flexWrap: 'nowrap',
-											flexDirection: 'column',
-											alignItems: 'center',
-											width: '50px',
-										}}>
-										<Card
-											size='small'
-											style={{
-												marginTop: '5px',
-												marginBottom: '5px',
-												backgroundColor: '#ff1d25',
-												width: '25px',
-											}}
-										/>
-										<div style={{ fontSize: '10px' }}>ROOT</div>
-									</div>
+      render: (val) => {
+        if (val === "n1:sg") {
+          return "Singular";
+        } else {
+          return "Plural";
+        }
+      },
+    },
 
-									<div
-										style={{
-											display: 'flex',
-											flexWrap: 'nowrap',
-											flexDirection: 'column',
-											alignItems: 'center',
-											width: '50px',
-										}}>
-										<Card
-											size='small'
-											style={{
-												marginTop: '5px',
-												marginBottom: '5px',
-												backgroundColor: '#0001eb',
-												width: '25px',
-											}}
-										/>
-										<div style={{ fontSize: '10px' }}>Stemformant</div>
-									</div>
+    {
+      title: "Person",
+      dataIndex: "person_288",
+      key: "Person",
+      width: "350px",
 
-									<div
-										style={{
-											display: 'flex',
-											flexWrap: 'nowrap',
-											flexDirection: 'column',
-											alignItems: 'center',
-											width: '50px',
-										}}>
-										<Card
-											size='small'
-											style={{
-												marginTop: '5px',
-												marginBottom: '5px',
-												backgroundColor: '#804008',
-												width: '25px',
-											}}
-										/>
-										<div style={{ fontSize: '10px' }}>Ending</div>
-									</div>
-								</div>
-								<Divider />
-								<Card
-									style={{
-										display: 'flex',
-										flexWrap: 'wrap',
-										justifyContent: 'space-between',
-										flexDirection: 'row',
-									}}>
-									<Radio.Group>
-										<Radio
-											style={{ display: 'block', marginBottom: '10px' }}
-											value={6}>
-											1S
-										</Radio>
-									</Radio.Group>
-									<Radio.Group>
-										<Radio
-											style={{ display: 'block', marginBottom: '10px' }}
-											value={6}>
-											2S
-										</Radio>
-									</Radio.Group>
-									<Radio.Group>
-										<Radio
-											style={{ display: 'block', marginBottom: '10px' }}
-											value={6}>
-											3S
-										</Radio>
-									</Radio.Group>
-									<Radio.Group>
-										<Radio
-											style={{ display: 'block', marginBottom: '10px' }}
-											value={6}>
-											1PL
-										</Radio>
-									</Radio.Group>
+      render: (val) => {
+        if (val === "n1:1_person") {
+          return "I";
+        } else if (val === "n1:2_person") {
+          return "II";
+        } else {
+          return "III";
+        }
+      },
+    },
+  ];
 
-									<Radio.Group>
-										<Radio
-											style={{ display: 'block', marginBottom: '10px' }}
-											value={6}>
-											2PL
-										</Radio>
-									</Radio.Group>
-									<Radio.Group>
-										<Radio
-											style={{ display: 'block', marginBottom: '10px' }}
-											value={6}>
-											3PL
-										</Radio>
-									</Radio.Group>
-								</Card>
+  return (
+    <div>
+      <Page>
+        <Header />
 
-								<Divider />
-								<Card>
-									<Select
-										style={{ width: '100%' }}
-										defaultValue={1}>
-										<Option value={1}>Present Indicative</Option>
-										<Option value={2}>Past Indicative</Option>
-										<Option value={3}>Future Indicative</Option>
-									</Select>
-								</Card>
-								<Divider />
-								<Card title={'+ ROOT'}>
-									<Input
-										style={{ margin: '5px' }}
-										placeholder={'Starts with...'}
-									/>
-									<Input
-										style={{ margin: '5px' }}
-										placeholder={'End with...'}
-									/>
-									<Input
-										style={{ margin: '5px' }}
-										placeholder={'Contains..'}
-									/>
-								</Card>
-							</div>
-						</Card>
-					</div>
-					<div
-						style={{
-							display: 'flex',
-							height: '100%',
-							justifyContent: 'center',
-							backgroundColor: '#ececed',
-						}}>
-						<Card style={{ width: '100%', backgroundColor: '#ececed' }}>
-							<Table
-								width={'100%'}
-								bordered={false}
-								columns={columns}
-								dataSource={list}
-								pagination={true}
-								rowKey={(record) => record.verb_1}
-							/>
-						</Card>
-					</div>
-				</div>
+        <div
+          style={{
+            height: "100%",
+            display: "flex",
+            paddingTop: "20px",
+            flexDirection: "row",
+            flexWrap: "nowrap",
+            justifyContent: "space-around",
+          }}
+        >
+          <div style={{ width: "300px", backgroundColor: "#ececed" }}>
+            <Card style={{ height: "100%", backgroundColor: "#ececed" }}>
+              <div style={{ height: "100%" }}>
+                <div
+                  style={{
+                    backgroundColor: "white",
+                    display: "flex",
+                    flexDirection: "row",
+                    alignContent: "center",
+                    flexWrap: "nowrap",
+                    justifyContent: "space-around",
+                    borderRadius: "5px",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "nowrap",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      width: "50px",
+                    }}
+                  >
+                    <Card
+                      size="small"
+                      style={{
+                        marginTop: "5px",
+                        marginBottom: "5px",
+                        backgroundColor: "#fe7ef3",
+                        width: "25px",
+                      }}
+                    />
+                    <div style={{ fontSize: "10px" }}>Preradical</div>
+                  </div>
 
-				<Footer />
-			</Page>
-		</div>
-	);
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "nowrap",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      width: "50px",
+                    }}
+                  >
+                    <Card
+                      size="small"
+                      style={{
+                        marginTop: "5px",
+                        marginBottom: "5px",
+                        backgroundColor: "#000000",
+                        width: "25px",
+                      }}
+                    />
+                    <div style={{ fontSize: "10px" }}>Preverb</div>
+                  </div>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "nowrap",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      width: "50px",
+                    }}
+                  >
+                    <Card
+                      size="small"
+                      style={{
+                        marginTop: "5px",
+                        marginBottom: "5px",
+                        backgroundColor: "#ff1d25",
+                        width: "25px",
+                      }}
+                    />
+                    <div style={{ fontSize: "10px" }}>ROOT</div>
+                  </div>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "nowrap",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      width: "50px",
+                    }}
+                  >
+                    <Card
+                      size="small"
+                      style={{
+                        marginTop: "5px",
+                        marginBottom: "5px",
+                        backgroundColor: "#0001eb",
+                        width: "25px",
+                      }}
+                    />
+                    <div style={{ fontSize: "10px" }}>Stemformant</div>
+                  </div>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "nowrap",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      width: "50px",
+                    }}
+                  >
+                    <Card
+                      size="small"
+                      style={{
+                        marginTop: "5px",
+                        marginBottom: "5px",
+                        backgroundColor: "#804008",
+                        width: "25px",
+                      }}
+                    />
+                    <div style={{ fontSize: "10px" }}>Ending</div>
+                  </div>
+                </div>
+                <Divider />
+                <Card
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    flexDirection: "row",
+                    width: "100%",
+                  }}
+                >
+                  <Radio.Group
+                    defaultValue={"3sg"}
+                    onChange={radioHandler}
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      justifyContent: "center",
+                      flexDirection: "row",
+                      width: "100%",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "flex-start",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <Radio value={"1sg"}>1S</Radio>
+                      <Radio value="1pl">1PL</Radio>
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "flex-start",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <Radio value="2sg">2S</Radio>
+                      <Radio value="2pl">2PL</Radio>
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "flex-start",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <Radio value="3sg">3S</Radio>
+                      <Radio value="3pl">3PL</Radio>
+                    </div>
+                  </Radio.Group>
+                </Card>
+
+                <Divider />
+                <Card>
+                  <Select
+                    style={{ width: "100%" }}
+                    defaultValue={tenses[4]}
+                    mode="multiple"
+                    placeholder="Please select"
+                  >
+
+                    {tenses.map((tense, index) => {
+                    return  <Option key={index} value={tense}>
+                        {tense}
+                      </Option>;
+                    })}
+
+                  </Select>
+                </Card>
+                <Divider />
+                <Card title={"+ ROOT"}>
+                  <Input
+                    style={{ margin: "5px" }}
+                    placeholder={"Starts with..."}
+                  />
+                  <Input
+                    style={{ margin: "5px" }}
+                    placeholder={"End with..."}
+                  />
+                  <Input style={{ margin: "5px" }} placeholder={"Contains.."} />
+                </Card>
+              </div>
+            </Card>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              height: "100%",
+              justifyContent: "center",
+              backgroundColor: "#ececed",
+            }}
+          >
+            <Card style={{ width: "100%", backgroundColor: "#ececed" }}>
+              <Table
+                width={"100%"}
+                bordered={false}
+                columns={columns}
+                dataSource={list}
+                pagination={true}
+                rowKey={(record) => record.verb_1}
+              />
+            </Card>
+          </div>
+        </div>
+
+        <Footer />
+      </Page>
+    </div>
+  );
 };
 
 export default Allverb;
