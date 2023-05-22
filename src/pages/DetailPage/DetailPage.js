@@ -14,22 +14,18 @@ const DetailPage = () => {
 	const { Panel } = Collapse;
 
 	const query = (prop) => {
-		return `PREFIX n1: <file:///home/ferre/data/ontologies/Kartu-verbs/>
-	SELECT DISTINCT ?verb_1 ?person_42 ?number_46 ?preverb_54 ?preradical_58 ?root_62 ?postradical_66 ?pFSF_70 ?ending_74 ?English_infinitive_78 ?Georgian_form_115
-	WHERE { ?verb_1 a n1:verb .
-			?verb_1 n1:person ?person_42 .
-			?verb_1 n1:number ?number_46 .
-			?verb_1 n1:tense n1:${prop} .
-			?verb_1 n1:preverb ?preverb_54 .
-			?verb_1 n1:preradical ?preradical_58 .
-			?verb_1 n1:root ?root_62 .
-			?verb_1 n1:postradical ?postradical_66 .
-			?verb_1 n1:pFSF ?pFSF_70 .
-			?verb_1 n1:ending ?ending_74 .
-			?verb_1 n1:Georgian_form ?Georgian_form_115 .
-			?verb_1 n1:Georgian_infinitive n1:${id} .
-		 }
-	LIMIT 6`;
+		return `PREFIX n1: <file:///home/achiko/clarino/2022/>
+SELECT DISTINCT ?inflected_verb_1 ?pre2_38 ?preverb_75 ?root_112 ?sf2_149 ?number_186 ?person_223 ?tense_in_paradigm_260
+WHERE { ?inflected_verb_1 a n1:inflected_verb .
+        ?inflected_verb_1 n1:vn2 n1:${id} .
+        ?inflected_verb_1 n1:pre2 ?pre2_38 .
+        ?inflected_verb_1 n1:preverb ?preverb_75 .
+        ?inflected_verb_1 n1:root ?root_112 .
+        ?inflected_verb_1 n1:sf2 ?sf2_149 .
+        ?inflected_verb_1 n1:number ?number_186 .
+        ?inflected_verb_1 n1:person ?person_223 .
+        ?inflected_verb_1 n1:tense_in_paradigm ?${prop} . }
+LIMIT 10`;
 	};
 
 	//PRESENT SUBSERIES
@@ -51,21 +47,21 @@ const DetailPage = () => {
 	const [pastPerfect] = useList(query('pastPerfect'));
 
 	const generatePersonAndNumber = (record) => {
-		switch (record.person_42.slice(3)) {
-			case 'first':
-				if (record.number_46.slice(3) === 'plural') {
+		switch (record.person_223.slice(3)) {
+			case '1_person':
+				if (record.number_186.slice(3) === 'pl') {
 					return '1pl';
 				} else {
 					return '1s';
 				}
-			case 'second':
-				if (record.number_46.slice(3) === 'plural') {
+			case '2_person':
+				if (record.number_186.slice(3) === 'pl') {
 					return '2pl';
 				} else {
 					return '2s';
 				}
-			case 'third':
-				if (record.number_46.slice(3) === 'plural') {
+			case '3_person':
+				if (record.number_186.slice(3) === 'pl') {
 					return '3pl';
 				} else {
 					return '3s';
@@ -77,15 +73,43 @@ const DetailPage = () => {
 	};
 	const columns = [
 		{
-			render: (record) => {
-				return <>{generatePersonAndNumber(record)}</>;
+			key: 'Person and number',
+			render: (val) => {
+				return <>{generatePersonAndNumber(val)}</>;
 			},
 		},
 
 		{
-			dataIndex: 'Georgian_form_115',
+			key: 'Latin',
 			render: (val) => {
-				return val?.slice(3);
+				let word = `${val.pre2_38.slice(3)}-${val.preverb_75.slice(
+					3
+				)}-${val.root_112.slice(3)}-${val.sf2_149.slice(3)}`;
+
+				if (val.preverb_75.includes('preverb')) {
+					word = `${val.pre2_38.slice(3)}-${val.root_112.slice(
+						3
+					)}-${val.sf2_149.slice(3)}`;
+				}
+
+				return word;
+			},
+		},
+
+		{
+			key: 'Georgian',
+			render: (val) => {
+				let word = `${val.pre2_38.slice(3)}-${val.preverb_75.slice(
+					3
+				)}-${val.root_112.slice(3)}-${val.sf2_149.slice(3)}`;
+
+				if (val.preverb_75.includes('preverb')) {
+					word = `${val.pre2_38.slice(3)}-${val.root_112.slice(
+						3
+					)}-${val.sf2_149.slice(3)}`;
+				}
+
+				return FormatData.convertLatinToGeorgian(word);
 			},
 		},
 
@@ -136,7 +160,7 @@ const DetailPage = () => {
 											title='Present indicative'
 											bordered={false}
 											style={{
-												width: 300,
+												width: 350,
 											}}>
 											<Table
 												size='small'
@@ -151,7 +175,7 @@ const DetailPage = () => {
 											title='Present Conjunctive'
 											bordered={false}
 											style={{
-												width: 300,
+												width: 350,
 											}}>
 											<Table
 												size='small'
@@ -166,7 +190,7 @@ const DetailPage = () => {
 											title='Present Perfect'
 											bordered={false}
 											style={{
-												width: 300,
+												width: 350,
 											}}>
 											<Table
 												size='small'
