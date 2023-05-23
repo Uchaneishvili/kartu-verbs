@@ -147,8 +147,7 @@ const DetailPage = () => {
 						<div className='inner-container'>
 							<Collapse
 								accordion
-								defaultActiveKey={defaultActiveKeys}
-								onChange={handlePanelChange}
+								defaultActiveKey={['1']}
 								style={{ width: '100%' }}>
 								<Panel
 									header='Present Subseries'
