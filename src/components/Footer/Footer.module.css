@@ -10,7 +10,7 @@
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-end;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	padding: 0px 10px 0px 10px;
@@ -44,7 +44,7 @@
 .container {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
+	align-items: flex-end;
 }
 
 .logosContainer {
