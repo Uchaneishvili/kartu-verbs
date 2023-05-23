@@ -323,7 +323,7 @@ FILTER ( ?person_288 = n1:1_person )
                   <Select
                     style={{ width: "100%" }}
                     defaultValue={tenses[4]}
-                    mode="multiple"
+                    // mode="multiple"
                     placeholder="Please select"
                     onChange={tensesHandler}
                   >
@@ -337,7 +337,7 @@ FILTER ( ?person_288 = n1:1_person )
                   </Select>
                 </Card>
                 <Divider />
-                <Card title={"+ ROOT"}>
+                {/* <Card title={"+ ROOT"}>
                   <Input
                     style={{ margin: "5px" }}
                     placeholder={"Starts with..."}
@@ -347,7 +347,7 @@ FILTER ( ?person_288 = n1:1_person )
                     placeholder={"End with..."}
                   />
                   <Input style={{ margin: "5px" }} placeholder={"Contains.."} />
-                </Card>
+                </Card> */}
               </div>
             </Card>
           </div>

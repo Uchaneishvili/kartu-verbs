@@ -28,6 +28,7 @@ body {
 	flex-direction: row;
 	align-items: center;
 	width: 100%;
+	font-weight: 600;
 }
 .navUl > li {
 	list-style: none;
