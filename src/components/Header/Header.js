@@ -24,9 +24,9 @@ function Header(props) {
 				</div>
 			</div>
 			<ul className={styles.navUl}>
-				<li>Home</li>
-				<li>Link</li>
-				<li>Disabled</li>
+				<li>PUBLICATIONS</li>
+				<li>PROJECT DESCRIPTION</li>
+				<li>TRANSLITERATION TABLE</li>
 			</ul>
 
 			{props.search && (

@@ -4,7 +4,6 @@
 	height: 10vh;
 	width: 100%;
 	background-color: #8e0726;
-	bottom: 0;
 }
 
 .StyledWrapper {
@@ -14,7 +13,7 @@
 	align-items: center;
 	flex-direction: row;
 	flex-wrap: nowrap;
-	padding: 10px 30px 0px 30px;
+	padding: 0px 10px 0px 10px;
 }
 
 .StyledWrapper > ul {
@@ -23,9 +22,36 @@
 	flex-direction: row;
 }
 .StyledWrapper > ul > li {
-	font-size: 16px;
+	font-size: 12px;
 	color: #d7d7d7d4;
-	margin-top: 5px;
 	cursor: pointer;
 	margin-right: 15px;
+}
+
+.container > ul > li {
+	font-size: 12px;
+	color: #d7d7d7d4;
+	cursor: pointer;
+	margin-right: 15px;
+}
+
+.container > ul {
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.logosContainer {
+	padding-top: 10px;
+	display: flex;
+	width: 40vw;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
 }
