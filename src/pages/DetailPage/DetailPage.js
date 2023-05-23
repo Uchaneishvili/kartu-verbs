@@ -33,8 +33,6 @@ const DetailPage = () => {
 	const [presentConjunctive] = useList(query('presentConjunctive'));
 	const [presentPerfect] = useList(query('presentPerfect'));
 
-	console.log('list', present);
-
 	//FUTURE SUBSERIES
 	const [future] = useList(query('future'));
 	const [conditional] = useList(query('conditional'));
@@ -80,7 +78,6 @@ const DetailPage = () => {
 				return <>{generatePersonAndNumber(val)}</>;
 			},
 		},
-
 		{
 			key: 'Latin',
 			render: (val) => {
@@ -97,48 +94,46 @@ const DetailPage = () => {
 				return word;
 			},
 		},
-
 		{
 			key: 'Georgian',
-			render: (val) => {
-				let word = `${val.pre2_38.slice(3)}-${val.preverb_75.slice(
-					3
-				)}-${val.root_112.slice(3)}-${val.sf2_149.slice(3)}`;
-
-				if (val.preverb_75.includes('preverb')) {
-					word = `${val.pre2_38.slice(3)}-${val.root_112.slice(
-						3
-					)}-${val.sf2_149.slice(3)}`;
-				}
-
-				return FormatData.convertLatinToGeorgian(word);
-			},
-		},
-
-		{
 			render: (record) => {
-				return (
-					<div style={{ overflow: 'hidden' }}>
-						<span style={{ color: '#fe7ef3' }}>
-							{FormatData.divideWord(record.preverb_54)}
-						</span>
-						<span style={{ color: '#000000' }}>
-							{FormatData.divideWord(record.preradical_58)}
-						</span>
-						<span style={{ color: '#ff1d25' }}>
-							{FormatData.divideWord(record.root_62)}
-						</span>
-						<span style={{ color: '#0001eb' }}>
-							{FormatData.divideWord(record.postradical_66)}
-						</span>
-						<span style={{ color: '#804008' }}>
-							{FormatData.divideWord(record.pFSF_70)}
-						</span>
-						<span style={{ color: '#0000FF' }}>
-							{FormatData.divideWord(record.ending_74)}
-						</span>
-					</div>
-				);
+				if (record.preverb_75.includes('preverb')) {
+					return (
+						<div style={{ overflow: 'hidden' }}>
+							<span style={{ color: '#fe7ef3' }}>
+								{FormatData.convertLatinToGeorgian(record.pre2_38.slice(3))}
+								<span style={{ color: '#000000' }}>-</span>
+							</span>
+							<span style={{ color: '#ff1d25' }}>
+								{FormatData.convertLatinToGeorgian(record.root_112.slice(3))}
+								<span style={{ color: '#000000' }}>-</span>
+							</span>
+							<span style={{ color: '#0001eb' }}>
+								{FormatData.convertLatinToGeorgian(record.sf2_149.slice(3))}
+							</span>
+						</div>
+					);
+				} else {
+					return (
+						<div style={{ overflow: 'hidden' }}>
+							<span style={{ color: '#fe7ef3' }}>
+								{FormatData.convertLatinToGeorgian(record.pre2_38.slice(3))}
+								<span style={{ color: '#000000' }}>-</span>
+							</span>
+							<span style={{ color: '#000000' }}>
+								{FormatData.convertLatinToGeorgian(record.preverb_75.slice(3))}
+								<span style={{ color: '#000000' }}>-</span>
+							</span>
+							<span style={{ color: '#ff1d25' }}>
+								{FormatData.convertLatinToGeorgian(record.root_112.slice(3))}
+								<span style={{ color: '#000000' }}>-</span>
+							</span>
+							<span style={{ color: '#0001eb' }}>
+								{FormatData.convertLatinToGeorgian(record.sf2_149.slice(3))}
+							</span>
+						</div>
+					);
+				}
 			},
 		},
 	];
@@ -152,7 +147,8 @@ const DetailPage = () => {
 						<div className='inner-container'>
 							<Collapse
 								accordion
-								defaultActiveKey={['1']}
+								defaultActiveKey={defaultActiveKeys}
+								onChange={handlePanelChange}
 								style={{ width: '100%' }}>
 								<Panel
 									header='Present Subseries'
