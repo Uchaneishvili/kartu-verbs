@@ -1,102 +1,110 @@
 /** @format */
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	margin: 0px;
+  margin: 0px;
 }
 
 .nav {
-	height: 9vh;
-	width: 100%;
-	background-color: #8e0726;
-	position: relative;
-	font-size: 30px;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-between;
-	align-items: center;
-	color: #f8f8f9;
-	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  height: 9vh;
+  width: 100%;
+  background-color: #8e0726;
+  position: relative;
+  font-size: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  color: #f8f8f9;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
 }
 .navUl {
-	display: flex;
-	justify-content: left;
-	flex-direction: row;
-	align-items: center;
-	width: 100%;
-	font-weight: 600;
+  display: flex;
+  justify-content: left;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  font-weight: 600;
 }
 .navUl > li {
-	list-style: none;
-	font-size: 16px;
-	padding-left: 10px;
-	font-weight: lighter;
-	padding-right: 10px;
+  list-style: none;
+  font-size: 16px;
+  padding-left: 10px;
+  font-weight: lighter;
+  padding-right: 10px;
 }
 .container {
-	display: grid;
-	height: 70px;
-	padding: 13px 0px;
-	align-items: center;
-	grid-template-areas: 'logo search delivery rightSide';
-	grid-template-columns: 176px fit-content(100%) fit-content(100%) auto;
+  display: grid;
+  height: 70px;
+  padding: 13px 0px;
+  align-items: center;
+  grid-template-areas: "logo search delivery rightSide";
+  grid-template-columns: 176px fit-content(100%) fit-content(100%) auto;
 }
 
 .container > .delivery {
-	width: 100%;
+  width: 100%;
 }
 
 .delivery > .logoWrapper {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logoWrapper > .logo {
-	cursor: pointer;
-	margin-right: 30px;
+  cursor: pointer;
+  margin-right: 30px;
 }
 
 .logoWrapper > .burgerMenu {
-	font-size: 24px;
-	margin-right: 30px;
-	cursor: pointer;
+  font-size: 24px;
+  margin-right: 30px;
+  cursor: pointer;
 }
 .logoWrapper > svg {
-	vertical-align: initial !important;
+  vertical-align: initial !important;
 }
 
 .menuContainer,
 .logoContainer {
-	padding: 30px;
-	margin-left: 3%;
-	cursor: pointer;
+  padding: 30px;
+  margin-left: 3%;
+  cursor: pointer;
 }
 
+.menuContainer > button {
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+}
+.menuContainer > button :hover {
+  color: #fff;
+}
 .searchButton {
-	height: 100%;
-	border: none;
-	background-color: transparent;
-	color: white;
-	font-size: 20px;
-	cursor: pointer;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .searchBarContainer {
-	height: 30px;
+  height: 30px;
 }
 
 .searchInput {
-	width: 300px;
-	border: none;
-	box-sizing: border-box;
-	outline: none;
-	padding: 5px;
+  width: 300px;
+  border: none;
+  box-sizing: border-box;
+  outline: none;
+  padding: 5px;
 }
 
 .searchForm {
-	display: flex;
+  display: flex;
 }

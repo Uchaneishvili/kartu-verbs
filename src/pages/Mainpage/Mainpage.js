@@ -29,7 +29,13 @@ function Mainpage() {
           </div>
           <SearchBar />
           <div className={styles.buttonContainer}>
-            <button>One Verb</button>
+            <button
+              onClick={() => {
+                navigate("/detailPage/shebindeba");
+              }}
+            >
+              One Verb
+            </button>
 
             <button
               onClick={() => {
