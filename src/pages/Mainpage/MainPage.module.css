@@ -1,41 +1,41 @@
 /** @format */
 
 .mainTitleContainer {
-	display: flex;
-	justify-content: center;
-	padding: 30px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .searchContainer {
-	background-color: #8e0727;
-	padding-top: 15px;
-	padding-bottom: 65px;
+  background-color: #8e0727;
+  padding-top: 10px;
+  padding-bottom: 50px;
 }
 
 .searchTitleContainer {
-	display: flex;
-	justify-content: center;
-	color: white;
-	padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  color: white;
+  padding-bottom: 10px;
 }
 .searchTitleContainer > h2 {
-	font-size: 35px;
+  font-size: 35px;
 }
 
 .buttonContainer {
-	display: flex;
-	width: 100%;
-	align-items: center;
-	justify-content: center;
-	padding-top: 20px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
 }
 .buttonContainer > button {
-	padding: 10px 30px;
-	font-size: 20px;
-	background-color: #fff;
-	color: #8e0726a3;
-	border: none;
-	border-radius: 3px;
-	margin-left: 20px;
-	cursor: pointer;
+  padding: 10px 30px;
+  font-size: 20px;
+  background-color: #fff;
+  color: #8e0726a3;
+  border: none;
+  border-radius: 3px;
+  margin-left: 20px;
+  cursor: pointer;
 }
