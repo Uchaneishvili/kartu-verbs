@@ -13,43 +13,27 @@ const DetailPage = () => {
 	const { id } = useParams();
 	const { Panel } = Collapse;
 
-	// 	const query = (prop) => {
-	// 		return `PREFIX n1: <file:///home/achiko/clarino/2022/>
-	// SELECT DISTINCT ?inflected_verb_1 ?pre2_38 ?preverb_75 ?root_112 ?sf2_149 ?number_186 ?person_223 ?tense_in_paradigm_260
-	// WHERE { ?inflected_verb_1 a n1:inflected_verb .
-	//         ?inflected_verb_1 n1:vn2 n1:${id} .
-	//         ?inflected_verb_1 n1:pre2 ?pre2_38 .
-	//         ?inflected_verb_1 n1:preverb ?preverb_75 .
-	//         ?inflected_verb_1 n1:root ?root_112 .
-	//         ?inflected_verb_1 n1:sf2 ?sf2_149 .
-	//         ?inflected_verb_1 n1:number ?number_186 .
-	//         ?inflected_verb_1 n1:person ?person_223 .
-	//         ?inflected_verb_1 n1:tense_in_paradigm ?${prop} . }
-	// LIMIT 10`;
-	// 	};
-
 	const query = (prop) => {
-		console.log(id);
-		console.log(prop);
-
-		return `PREFIX n1: <file:///home/achiko/clarino/2023/f12/>
-SELECT DISTINCT ?inflected_verb_1 ?vn2_103 ?pre2_141 ?preverb_179 ?root_218 ?sf2_263 ?number_303 ?person_341 ?tense_380
-WHERE { ?inflected_verb_1 a n1:inflected_verb .
-        ?inflected_verb_1 n1:vn2 ?vn2_103 .
-        ?inflected_verb_1 n1:pre2 ?pre2_141 .
-        ?inflected_verb_1 n1:preverb ?preverb_179 .
-        ?inflected_verb_1 n1:root ?root_218 .
-        ?inflected_verb_1 n1:sf2 ?sf2_263 .
-        ?inflected_verb_1 n1:number ?number_303 .
-        ?inflected_verb_1 n1:person ?person_341 .
-        ?inflected_verb_1 n1:tense ?tense_380 . }
-LIMIT 200`;
+		return `PREFIX n1: <file:///home/achiko/clarino/2022/>
+	SELECT DISTINCT ?inflected_verb_1 ?pre2_38 ?preverb_75 ?root_112 ?sf2_149 ?number_186 ?person_223 ?tense_in_paradigm_260
+	WHERE { ?inflected_verb_1 a n1:inflected_verb .
+	        ?inflected_verb_1 n1:vn2 n1:${id} .
+	        ?inflected_verb_1 n1:pre2 ?pre2_38 .
+	        ?inflected_verb_1 n1:preverb ?preverb_75 .
+	        ?inflected_verb_1 n1:root ?root_112 .
+	        ?inflected_verb_1 n1:sf2 ?sf2_149 .
+	        ?inflected_verb_1 n1:number ?number_186 .
+	        ?inflected_verb_1 n1:person ?person_223 .
+	        ?inflected_verb_1 n1:tense_in_paradigm ?${prop} . }
+	LIMIT 10`;
 	};
 
 	//PRESENT SUBSERIES
 	const [present] = useList(query('present'));
 	const [presentConjunctive] = useList(query('presentConjunctive'));
 	const [presentPerfect] = useList(query('presentPerfect'));
+
+	console.log('list', present);
 
 	//FUTURE SUBSERIES
 	const [future] = useList(query('future'));

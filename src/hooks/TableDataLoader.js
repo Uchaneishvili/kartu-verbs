@@ -8,7 +8,7 @@ export function useList(query) {
 
 	const getData = useCallback(async () => {
 		try {
-			const url = 'http://kvdb.tsu.ge:3030/f12/sparql';
+			const url = 'http://kvdb.tsu.ge:3030/t10/sparql';
 			const response = await axios.get(url, {
 				params: {
 					query: query,
