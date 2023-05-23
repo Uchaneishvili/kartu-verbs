@@ -11,10 +11,29 @@ const { Option } = Select;
 
 const Allverb = () => {
   const [value, setValue] = useState("3sg");
+
   const radioHandler = (e) => {
     setValue(e.target.value);
-    console.log(value[0]);
   };
+
+  const tenses = [
+    "aorist ",
+    "optative ",
+    "imperfect ",
+    "perfect ",
+    "present ",
+    "conditional",
+    "future ",
+    "conj-perfect",
+    "conj-present ",
+    "pluperfect ",
+    "conj-future",
+  ];
+  const [curTense, setCurTense] = useState(tenses[4]);
+  const tensesHandler = (e) => {
+    setCurTense(e);
+  };
+
   const [list] = useList(
     `PREFIX n1: <file:///home/achiko/clarino/2022/>
 SELECT DISTINCT ?inflected_verb_1 ?vn2_103 ?tense_in_paradigm_251 ?person_288 ?number_325
@@ -25,7 +44,7 @@ WHERE { ?inflected_verb_1 a n1:inflected_verb .
         ?inflected_verb_1 n1:number ?number_325 .
 		FILTER ( ?person_288 = n1:${value[0]}_person )
 		?inflected_verb_1 n1:number n1:${value[1] + value[2]} .
-		?inflected_verb_1 n1:tense_in_paradigm n1:present . 
+		?inflected_verb_1 n1:tense_in_paradigm n1:${curTense} . 
 	 }
 LIMIT 200`
   );
@@ -41,19 +60,6 @@ FILTER ( ?person_288 = n1:1_person )
 ?inflected_verb_1 n1:tense_in_paradigm <file:///home/achiko/clarino/2022/conj-perfect> . 
 
 */
-  const tenses = [
-    "aorist ",
-    "optative ",
-    "imperfect ",
-    "perfect ",
-    "present ",
-    "conditional",
-    "future ",
-    "conj-perfect",
-    "conj-present ",
-    "pluperfect ",
-    "conj-future",
-  ];
 
   const columns = [
     {
@@ -256,6 +262,7 @@ FILTER ( ?person_288 = n1:1_person )
                 </div>
                 <Divider />
                 <Card
+                  title={"Person & Number"}
                   style={{
                     display: "flex",
                     flexWrap: "wrap",
@@ -318,14 +325,15 @@ FILTER ( ?person_288 = n1:1_person )
                     defaultValue={tenses[4]}
                     mode="multiple"
                     placeholder="Please select"
+                    onChange={tensesHandler}
                   >
-
                     {tenses.map((tense, index) => {
-                    return  <Option key={index} value={tense}>
-                        {tense}
-                      </Option>;
+                      return (
+                        <Option key={index} value={tense}>
+                          {tense}
+                        </Option>
+                      );
                     })}
-
                   </Select>
                 </Card>
                 <Divider />
