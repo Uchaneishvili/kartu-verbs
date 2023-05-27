@@ -27,8 +27,7 @@ export default class FormatData {
 
 	static getSearchSuggestion(val) {
 		if (val) {
-			const components = val.split("_");
-			return components[1].replace(/-/g, "");
+			return val;
 		}
 		return "";
 	}

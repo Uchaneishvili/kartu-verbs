@@ -1,17 +1,17 @@
 /** @format */
 
-import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styles from './SearchBar.module.css';
-import { Form } from 'antd';
-import { useList } from '../../hooks/TableDataLoader';
-import SearchSuggestion from '../SearchSuggestions/SearchSuggestions';
-import { useCallback } from 'react';
-import { SearchOutlined } from '@ant-design/icons';
-import FormatData from '../../utils/FormatData';
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "./SearchBar.module.css";
+import { Form } from "antd";
+import { useList } from "../../hooks/TableDataLoader";
+import SearchSuggestion from "../SearchSuggestions/SearchSuggestions";
+import { useCallback } from "react";
+import { SearchOutlined } from "@ant-design/icons";
+import FormatData from "../../utils/FormatData";
 
 const SearchBar = () => {
-	const [searchTerm, setSearchTerm] = useState('');
+	const [searchTerm, setSearchTerm] = useState("");
 	const [suggestionsOpen, setSuggestionsOpen] = useState(false);
 	const [suggestions, setSuggestions] = useState([]);
 
@@ -28,17 +28,27 @@ const SearchBar = () => {
 		}
 	};
 
+	// 	const query = `PREFIX text: <http://jena.apache.org/text#>
+	// PREFIX n1: <file:///home/achiko/clarino/2023/f12/>
+	// SELECT DISTINCT ?inflected_verb_1 ?vn2_103 ?surface_form_140
+	// WHERE { ?surface_form_140 text:query "${FormatData.convertGeorgianToLatin(
+	// 		searchTerm
+	// 	)}*" .
+	//         ?inflected_verb_1 a n1:inflected_verb .
+	//         ?inflected_verb_1 n1:vn2 ?vn2_103 .
+	//         ?inflected_verb_1 n1:surface_form ?surface_form_140 . }
+	// LIMIT 10`;
+
 	const query = `PREFIX text: <http://jena.apache.org/text#>
-PREFIX n1: <file:///home/achiko/clarino/2022/>
-SELECT DISTINCT ?inflected_verb_1 ?vn2_103 ?surface_form_140
-WHERE { ?surface_form_140 text:query "${FormatData.convertGeorgianToLatin(
+PREFIX n1: <file:///home/achiko/clarino/2023/f12/>
+SELECT DISTINCT ?inflected_verb_1 ?surface_form_197 ?vn2_234
+WHERE { ?inflected_verb_1 text:query "${FormatData.convertGeorgianToLatin(
 		searchTerm
 	)}*" .
         ?inflected_verb_1 a n1:inflected_verb .
-        ?inflected_verb_1 n1:vn2 ?vn2_103 .
-        ?inflected_verb_1 n1:surface_form ?surface_form_140 . }
-LIMIT 10`;
-
+        ?inflected_verb_1 n1:surface_form ?surface_form_197 .
+        ?inflected_verb_1 n1:vn2 ?vn2_234 . }
+LIMIT 200`;
 	const [list] = useList(query);
 
 	const getSuggestions = useCallback(
@@ -54,13 +64,18 @@ LIMIT 10`;
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		navigate(`detailPage/${FormatData.getSearchSuggestion(list[0].vn2_103)}`);
+
+		navigate(
+			`detailPage/${FormatData.getSearchSuggestion(
+				FormatData.parsing(list[0]?.vn2_234.value)
+			)}`
+		);
 	};
 
 	const resetValues = () => {
 		setSuggestions([]);
-		document.getElementsByTagName('body')[0].style.cssText =
-			'overflow: auto; padding-inline-end: 0px;';
+		document.getElementsByTagName("body")[0].style.cssText =
+			"overflow: auto; padding-inline-end: 0px;";
 	};
 
 	return (
@@ -68,23 +83,23 @@ LIMIT 10`;
 			<Form className={styles.searchForm}>
 				<button
 					onClick={handleSubmit}
-					type='submit'
+					type="submit"
 					className={styles.searchButton}
 					style={{
 						zIndex: suggestionsOpen ? 102 : 0,
-						position: suggestionsOpen ? 'relative' : 'initial',
+						position: suggestionsOpen ? "relative" : "initial",
 					}}>
 					<SearchOutlined />
 				</button>
 				<input
-					id='search'
-					name='searchText'
+					id="search"
+					name="searchText"
 					style={{
-						position: suggestionsOpen ? 'relative' : 'initial',
+						position: suggestionsOpen ? "relative" : "initial",
 						zIndex: suggestionsOpen ? 102 : 0,
 					}}
 					className={styles.searchInput}
-					placeholder='Search any verb...'
+					placeholder="Search any verb..."
 					onChange={(value) => (value ? handleChange(value) : resetValues())}
 					onFocus={() => {
 						setSuggestionsOpen(true);

@@ -1,9 +1,9 @@
 /** @format */
 
-import React from 'react';
-import styles from './SuggestionItem.module.css';
-import FormatData from '../../utils/FormatData';
-import { useNavigate } from 'react-router';
+import React from "react";
+import styles from "./SuggestionItem.module.css";
+import FormatData from "../../utils/FormatData";
+import { useNavigate } from "react-router";
 
 const SuggestionItem = (props) => {
 	const navigate = useNavigate();
@@ -13,14 +13,14 @@ const SuggestionItem = (props) => {
 				className={styles.description}
 				onClick={() =>
 					navigate(
-						`detailPage/${FormatData.slicedData(props.suggestion.vn2_103)}`
+						`detailPage/${FormatData.parsing(props.suggestion.vn2_234.value)}`
 					)
 				}>
 				<div className={styles.description__title}>
 					{FormatData.convertLatinToGeorgian(
-						FormatData.slicedData(props.suggestion.surface_form_140)
-					)}{' '}
-					/ {FormatData.slicedData(props.suggestion.surface_form_140)}
+						FormatData.parsing(props.suggestion.surface_form_197.value)
+					)}{" "}
+					/ {FormatData.parsing(props.suggestion.surface_form_197.value)}
 				</div>
 				<div className={styles.description__properties}>
 					<span className={styles.description__properties__unit}></span>

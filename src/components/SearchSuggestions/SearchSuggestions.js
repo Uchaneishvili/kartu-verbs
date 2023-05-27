@@ -1,9 +1,9 @@
 /** @format */
 
-import React from 'react';
-import Backdrop from '../../ui/Backdrop/Backdrop';
-import styles from './SearchSuggestions.module.css';
-import SuggestionItem from './SuggestionItem';
+import React from "react";
+import Backdrop from "../../ui/Backdrop/Backdrop";
+import styles from "./SearchSuggestions.module.css";
+import SuggestionItem from "./SuggestionItem";
 
 const SearchSuggestions = (props) => {
 	return (
@@ -17,7 +17,7 @@ const SearchSuggestions = (props) => {
 			{props.visible && props.suggestion.length ? (
 				<ul className={styles.SearchSuggestion__result}>
 					{props.suggestion.map((suggestion) => (
-						<li key={suggestion.inflected_verb_1}>
+						<li key={suggestion.inflected_verb_1.value}>
 							<SuggestionItem
 								handleSubmit={props.handleSubmit}
 								suggestion={suggestion}
