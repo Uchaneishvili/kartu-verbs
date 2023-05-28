@@ -1,7 +1,7 @@
 /** @format */
 
 import { React, useState } from "react";
-import { Table, Card, Divider, Radio, Select, Input } from "antd";
+import { Table, Card, Divider, Radio, Select } from "antd";
 import { useList } from "../../hooks/TableDataLoader.js";
 import Page from "../../components/page";
 import Header from "../../components/Header/Header";
@@ -34,6 +34,8 @@ const Allverb = () => {
 		setCurTense(e);
 	};
 
+	console.log(value);
+
 	const [list] = useList(
 		// 		`PREFIX n1: <file:///home/achiko/clarino/2022/>
 		// SELECT DISTINCT ?inflected_verb_1 ?vn2_103 ?tense_in_paradigm_251 ?person_288 ?number_325
@@ -42,20 +44,24 @@ const Allverb = () => {
 		//         ?inflected_verb_1 n1:tense_in_paradigm ?tense_in_paradigm_251 .
 		//         ?inflected_verb_1 n1:person ?person_288 .
 		//         ?inflected_verb_1 n1:number ?number_325 .
-		// 		FILTER ( ?person_288 = n1:${value[0]}_person )
-		// 		?inflected_verb_1 n1:number n1:${value[1] + value[2]} .
-		// 		?inflected_verb_1 n1:tense_in_paradigm n1:${curTense} .
+		// FILTER ( ?person_288 = n1:${value[0]}_person )
+		// ?inflected_verb_1 n1:number n1:${value[1] + value[2]} .
+		// ?inflected_verb_1 n1:tense_in_paradigm n1:${curTense} .
 		// 	 }
 		// LIMIT 200`
 
 		`PREFIX n1: <file:///home/achiko/clarino/2023/f12/>
-SELECT DISTINCT ?inflected_verb_1 ?pre2_38 ?preverb_75 ?root_112 ?sf2_149 ?person_288 ?number_325 ?tense_in_paradigm_251
+SELECT DISTINCT ?inflected_verb_1 ?vn2_494 ?preverb_143 ?pre2_183 ?root_220 ?sf2_257 ?person_333 ?number_374 ?tense_449 ?ending_486
 WHERE { ?inflected_verb_1 a n1:inflected_verb .
-        ?inflected_verb_1 n1:pre2 ?pre2_38 .
-        ?inflected_verb_1 n1:preverb ?preverb_75 .
-        ?inflected_verb_1 n1:root ?root_112 .
-        ?inflected_verb_1 n1:sf2 ?sf2_149 . 
-		?inflected_verb_1 n1:person ?person_288 .
+        ?inflected_verb_1 n1:vn2 ?vn2_494 .
+        ?inflected_verb_1 n1:preverb ?preverb_143 .
+        ?inflected_verb_1 n1:pre2 ?pre2_183 .
+        ?inflected_verb_1 n1:root ?root_220 .
+        ?inflected_verb_1 n1:sf2 ?sf2_257 .
+        ?inflected_verb_1 n1:person ?person_333 .
+        ?inflected_verb_1 n1:number ?number_374 .
+        ?inflected_verb_1 n1:tense ?tense_449 .
+        ?inflected_verb_1 n1:ending ?ending_486 . 
 }
 LIMIT 200`
 	);
@@ -82,30 +88,34 @@ FILTER ( ?person_288 = n1:1_person )
 					<span style={{ overflow: "hidden", display: "flex" }}>
 						<span style={{ color: "#fe7ef3" }}>
 							{FormatData.convertLatinToGeorgian(
-								FormatData.parsing(record.pre2_38.value)
+								FormatData.parsing(record.pre2_183.value)
 							)}
 						</span>
 						<span style={{ color: "#000000" }}>
 							{FormatData.convertLatinToGeorgian(
-								FormatData.parsing(record.preverb_75.value)
+								FormatData.parsing(record.preverb_143.value)
 							)}
 						</span>
 
 						<span style={{ color: "#ff1d25" }}>
 							{FormatData.convertLatinToGeorgian(
-								FormatData.parsing(record.root_112.value)
+								FormatData.parsing(record.root_220.value)
 							)}
 						</span>
 						<span style={{ color: "#0001eb" }}>
 							{FormatData.convertLatinToGeorgian(
-								FormatData.parsing(record.sf2_149.value)
+								FormatData.parsing(record.sf2_257.value)
+							)}
+						</span>
+						<span style={{ color: "#804008" }}>
+							{FormatData.convertLatinToGeorgian(
+								FormatData.parsing(record.ending_486.value)
 							)}
 						</span>
 					</span>
 				);
 			},
 		},
-
 		{
 			title: "Latin Infinitive",
 			width: "500px",
@@ -114,17 +124,20 @@ FILTER ( ?person_288 = n1:1_person )
 				return (
 					<span style={{ overflow: "hidden", display: "flex" }}>
 						<span style={{ color: "#fe7ef3" }}>
-							{FormatData.parsing(record.pre2_38.value)}
+							{FormatData.parsing(record.pre2_183.value)}
 						</span>
 						<span style={{ color: "#000000" }}>
-							{FormatData.parsing(record.preverb_75.value)}
+							{FormatData.parsing(record.preverb_143.value)}
 						</span>
 
 						<span style={{ color: "#ff1d25" }}>
-							{FormatData.parsing(record.root_112.value)}
+							{FormatData.parsing(record.root_220.value)}
 						</span>
 						<span style={{ color: "#0001eb" }}>
-							{FormatData.parsing(record.sf2_149.value)}
+							{FormatData.parsing(record.sf2_257.value)}
+						</span>
+						<span style={{ color: "#804008" }}>
+							{FormatData.parsing(record.ending_486.value)}
 						</span>
 					</span>
 				);

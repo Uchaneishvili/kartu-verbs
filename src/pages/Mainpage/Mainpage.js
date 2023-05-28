@@ -1,14 +1,14 @@
 /** @format */
 
-import React from 'react';
-import Page from '../../components/page';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
-import SearchBar from '../../components/SearchBar/SearchBar';
-import { Abgd } from '../../icons/abgd';
-import styles from './MainPage.module.css';
-import { useNavigate } from 'react-router-dom';
-import { Qartu } from '../../icons/qartu';
+import React from "react";
+import Page from "../../components/page";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import { Abgd } from "../../icons/abgd";
+import styles from "./MainPage.module.css";
+import { useNavigate } from "react-router-dom";
+import { Qartu } from "../../icons/qartu";
 
 function Mainpage() {
 	const navigate = useNavigate();
@@ -31,20 +31,20 @@ function Mainpage() {
 					<div className={styles.buttonContainer}>
 						<button
 							onClick={() => {
-								navigate('/detailPage/tamashi');
+								navigate("/detailPage/tamash");
 							}}>
 							One Verb
 						</button>
 
 						<button
 							onClick={() => {
-								navigate('/allVerb');
+								navigate("/allVerb");
 							}}>
 							All Verb
 						</button>
 					</div>
 				</div>
-				<div style={{ padding: '20px' }}>
+				<div style={{ padding: "20px" }}>
 					<Abgd />
 				</div>
 			</Page>
