@@ -3,4 +3,5 @@
 .wrapper {
 	position: relative;
 	min-height: 80vh;
-}
+	background: #F0F0F0;
+}	

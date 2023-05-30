@@ -4,12 +4,17 @@ import Page from "../../components/page";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 function TransliterationTable() {
-
   return (
     <>
       <Header search={false} />
 
-      <Page>
+      <div
+        style={{
+          position: "relative",
+          minHeight: "80vh",
+          backgroundColor: "#fff",
+        }}
+      >
         <div
           style={{
             display: "flex",
@@ -24,7 +29,7 @@ function TransliterationTable() {
             style={{
               margin: "0 auto",
               paddingBottom: "20px",
-            
+
               fontStyle: "normal",
               fontWeight: " 500",
               fontSize: "48px",
@@ -37,7 +42,7 @@ function TransliterationTable() {
             <Table />
           </div>
         </div>
-      </Page>
+      </div>
       <Footer />
     </>
   );

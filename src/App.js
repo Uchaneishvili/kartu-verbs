@@ -7,6 +7,8 @@ import DetailPage from "./pages/DetailPage/DetailPage";
 import Allverb from "./pages/Allverb/Allverb";
 import TransliterationTable from "./pages/TransliterationTable/TransliterationTable";
 
+import ProjectDescription from "./pages/ProjectDescription/ProjectDescription";
+
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +21,7 @@ function App() {
           path="/transliteration-table"
           element={<TransliterationTable />}
         />
+        <Route path="/project-description" element={<ProjectDescription />} />
       </Routes>
     </BrowserRouter>
   );
