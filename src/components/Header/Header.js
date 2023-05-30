@@ -1,17 +1,13 @@
 /** @format */
 
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Header.module.css";
 import { DoubleLeftOutlined, DoubleRightOutlined } from "@ant-design/icons";
-
-// import { SearchBarIcon } from '../../icons/searchBarIcon';
-// import { Form, Button } from 'antd';
 import { Logo } from "../../icons/logo";
 
 import { useNavigate } from "react-router-dom";
 
 function Header(props) {
-	const [searchValue, setSearchValue] = useState("");
 	const navigate = useNavigate();
 	return (
 		<div className={styles.nav}>
