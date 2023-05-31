@@ -150,7 +150,6 @@ LIMIT 6`;
 					<div className="page-container">
 						<div className="inner-container">
 							<Collapse
-								accordion
 								defaultActiveKey={["1"]}
 								style={{ width: "100%" }}>
 								<Panel
