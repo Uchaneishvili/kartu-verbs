@@ -57,8 +57,10 @@ function ProjectDescription() {
               Chachua, Ana Idadze, Veriko Nikuradze, Tornike Tchanturia, Ana
               Elchishvili, and Aleksandre Jajanidze. We are grateful to Keti
               Meipariani who managed the working teams of two semesters and who
-              remotely helps the following teams. Last but not least, we want to
-              warmly thank Sébastien Ferré for his support to use Sparklis.{" "}
+              remotely helps the following teams. We want to warmly thank
+              Sébastien Ferré for his support to use Sparklis and last but not
+              least, thanks to Giga Uchaneishvili, Bachana Saginadze and Mikheil
+              Darsavelidze for designing and building this Web Application.{" "}
             </p>
           </div>
 

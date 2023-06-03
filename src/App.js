@@ -8,6 +8,7 @@ import Allverb from "./pages/Allverb/Allverb";
 import TransliterationTable from "./pages/TransliterationTable/TransliterationTable";
 
 import ProjectDescription from "./pages/ProjectDescription/ProjectDescription";
+import Publicaiton from "./pages/Publication/Publication";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           element={<TransliterationTable />}
         />
         <Route path="/project-description" element={<ProjectDescription />} />
+        <Route path="/publications" element={<Publicaiton />} />
       </Routes>
     </BrowserRouter>
   );
