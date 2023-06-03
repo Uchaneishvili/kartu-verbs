@@ -1,15 +1,15 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Table, Card, Divider, Radio, Select } from "antd";
 import { useList } from "../../hooks/TableDataLoader.js";
 import Page from "../../components/page";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import FormatData from "../../utils/FormatData";
-import SearchBar from "../../components/SearchBar/SearchBar.js";
 const { Option } = Select;
 
 const Allverb = () => {
 	const [value, setValue] = useState("3sg");
+	const [loader, setLoader] = useState(true);
 
 	const radioHandler = (e) => {
 		setValue(e.target.value);
@@ -33,22 +33,7 @@ const Allverb = () => {
 		setCurTense(e);
 	};
 
-	console.log(value, curTense, "------", value[1] + value[2]);
-
 	const [list] = useList(
-		// 		`PREFIX n1: <file:///home/achiko/clarino/2022/>
-		// SELECT DISTINCT ?inflected_verb_1 ?vn2_103 ?tense_in_paradigm_251 ?person_288 ?number_325
-		// WHERE { ?inflected_verb_1 a n1:inflected_verb .
-		//         ?inflected_verb_1 n1:vn2 ?vn2_103 .
-		//         ?inflected_verb_1 n1:tense_in_paradigm ?tense_in_paradigm_251 .
-		//         ?inflected_verb_1 n1:person ?person_288 .
-		//         ?inflected_verb_1 n1:number ?number_325 .
-		// FILTER ( ?person_288 = n1:${value[0]}_person )
-		// ?inflected_verb_1 n1:number n1:${value[1] + value[2]} .
-		// ?inflected_verb_1 n1:tense_in_paradigm n1:${curTense} .
-		// 	 }
-		// LIMIT 200`
-
 		`PREFIX n1: <file:///home/achiko/clarino/2023/f12/>
 SELECT DISTINCT ?inflected_verb_1 ?vn2_140 ?preverb_178 ?pre2_221 ?root_220 ?sf2_219 ?tense_218 ?person_217 ?number_216 ?ending_215
 WHERE { ?inflected_verb_1 a n1:inflected_verb .
@@ -64,17 +49,11 @@ WHERE { ?inflected_verb_1 a n1:inflected_verb .
 LIMIT 200`
 	);
 
-	/*  
-FILTER ( ?person_288 = n1:1_person )
-
-        ?inflected_verb_1 n1:person n1:1_person .
-
-
-  ?inflected_verb_1 n1:number n1:pl .
-
-?inflected_verb_1 n1:tense_in_paradigm <file:///home/achiko/clarino/2022/conj-perfect> . 
-
-*/
+	useEffect(() => {
+		if (list.length > 0) {
+			setLoader(false);
+		}
+	}, [list]);
 
 	const columns = [
 		{
@@ -405,12 +384,10 @@ FILTER ( ?person_288 = n1:1_person )
 								width: "100%",
 								backgroundColor: "#ececed",
 							}}>
-							<div style={{ paddingBottom: "2%" }}>
-								<SearchBar />
-							</div>
 							<Table
 								width={"100%"}
 								bordered={false}
+								loading={loader}
 								columns={columns}
 								dataSource={list}
 								pagination={true}

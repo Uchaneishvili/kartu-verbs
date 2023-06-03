@@ -41,25 +41,6 @@ function Header(props) {
 				</li>
 			</ul>
 
-			{/* {props.search && (
-				<div className={styles.searchBarContainer}>
-					<Form className={styles.searchForm}>
-						<input
-							className={styles.searchInput}
-							type='text'
-							defaultValue={searchValue}
-							onChange={(e) => setSearchValue(e.target.value)}
-							placeholder='Search any word'
-						/>
-
-						<button
-							type='submit'
-							className={styles.searchButton}>
-							<SearchBarIcon />
-						</button>
-					</Form>
-				</div>
-			)} */}
 			<div className={styles.menuContainer}>
 				{window.location.pathname.includes("allVerb") && (
 					<button

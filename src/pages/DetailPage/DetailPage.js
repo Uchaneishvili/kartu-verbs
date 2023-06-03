@@ -6,6 +6,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import FormatData from "../../utils/FormatData";
 import { useParams } from "react-router-dom";
+import SearchBar from "../../components/SearchBar/SearchBar.js";
 
 const DetailPage = () => {
 	const { id } = useParams();
@@ -76,7 +77,6 @@ LIMIT 6`;
 	]);
 
 	const generatePersonAndNumber = (record) => {
-		console.log(record.person_333.value);
 		switch (FormatData.parsing(record.person_333.value)) {
 			case "1":
 				if (FormatData.parsing(record.number_374.value) === "pl") {
@@ -178,6 +178,9 @@ LIMIT 6`;
 				<Page>
 					<div className="page-container">
 						<div className="inner-container">
+							<div style={{ paddingBottom: "2%" }}>
+								<SearchBar />
+							</div>
 							<Collapse
 								defaultActiveKey={["1"]}
 								style={{ width: "100%" }}>
