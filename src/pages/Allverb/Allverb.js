@@ -52,20 +52,17 @@ const Allverb = () => {
 		// LIMIT 200`
 
 		`PREFIX n1: <file:///home/achiko/clarino/2023/f12/>
-SELECT DISTINCT ?inflected_verb_1 ?vn2_494 ?preverb_143 ?pre2_183 ?root_220 ?sf2_257 ?person_333 ?number_374 ?tense_449 ?ending_486
+SELECT DISTINCT ?inflected_verb_1 ?vn2_140 ?preverb_178 ?pre2_221 ?root_220 ?sf2_219 ?tense_218 ?person_217 ?number_216 ?ending_215
 WHERE { ?inflected_verb_1 a n1:inflected_verb .
-        ?inflected_verb_1 n1:vn2 ?vn2_494 .
-        ?inflected_verb_1 n1:preverb ?preverb_143 .
-        ?inflected_verb_1 n1:pre2 ?pre2_183 .
+        ?inflected_verb_1 n1:vn2 ?vn2_140 .
+        ?inflected_verb_1 n1:preverb ?preverb_178 .
+        ?inflected_verb_1 n1:pre2 ?pre2_221 .
         ?inflected_verb_1 n1:root ?root_220 .
-        ?inflected_verb_1 n1:sf2 ?sf2_257 .
-        ?inflected_verb_1 n1:person ?person_333 .
-        ?inflected_verb_1 n1:ending ?ending_486 . 
-		?inflected_verb_1 n1:number n1:${value[1] + value[2]}.
-		?inflected_verb_1 n1:person n1:${value[0]} .
-		?inflected_verb_1 n1:tense n1:${curTense} .
-		
-}
+        ?inflected_verb_1 n1:sf2 ?sf2_219 .
+        ?inflected_verb_1 n1:ending ?ending_215 .
+      	?inflected_verb_1 n1:number n1:${value[1] + value[2]}.
+		    ?inflected_verb_1 n1:person n1:${value[0]} .
+		    ?inflected_verb_1 n1:tense n1:${curTense} .}
 LIMIT 200`
 	);
 
@@ -83,20 +80,44 @@ FILTER ( ?person_288 = n1:1_person )
 
 	const columns = [
 		{
-			title: "Georgian Infinitive",
+			title: "VERBAL NOUN (GEO)",
 			width: "500px",
-			key: "Georgian",
+			key: "VERBAL NOUN (GEO)",
+			render: (record) => {
+				return FormatData.convertLatinToGeorgian(
+					FormatData.parsing(record.vn2_140.value)
+				);
+			},
+		},
+		{
+			title: "VERBAL NOUN (ENG)",
+			width: "500px",
+			key: "VERBAL NOUN (ENG)",
+			render: (record) => {
+				return FormatData.parsing(record.vn2_140.value);
+			},
+		},
+		{
+			title: "VERBAL FORM (GEO)",
+			width: "500px",
+			key: "VERBAL FORM (GEO)",
 			render: (record) => {
 				return (
-					<span style={{ overflow: "hidden", display: "flex" }}>
+					<span
+						style={{
+							overflow: "hidden",
+							display: "flex",
+							width: "100%",
+							justifyContent: "center",
+						}}>
 						<span style={{ color: "#fe7ef3" }}>
 							{FormatData.convertLatinToGeorgian(
-								FormatData.parsing(record.pre2_183.value)
+								FormatData.parsing(record.pre2_221.value)
 							)}
 						</span>
 						<span style={{ color: "#000000" }}>
 							{FormatData.convertLatinToGeorgian(
-								FormatData.parsing(record.preverb_143.value)
+								FormatData.parsing(record.preverb_178.value)
 							)}
 						</span>
 
@@ -107,12 +128,12 @@ FILTER ( ?person_288 = n1:1_person )
 						</span>
 						<span style={{ color: "#0001eb" }}>
 							{FormatData.convertLatinToGeorgian(
-								FormatData.parsing(record.sf2_257.value)
+								FormatData.parsing(record.sf2_219.value)
 							)}
 						</span>
 						<span style={{ color: "#804008" }}>
 							{FormatData.convertLatinToGeorgian(
-								FormatData.parsing(record.ending_486.value)
+								FormatData.parsing(record.ending_215.value)
 							)}
 						</span>
 					</span>
@@ -120,27 +141,33 @@ FILTER ( ?person_288 = n1:1_person )
 			},
 		},
 		{
-			title: "Latin Infinitive",
+			title: "VERBAL FORM (ENG)",
 			width: "500px",
-			key: "Latin",
+			key: "VERBAL FORM (ENG)",
 			render: (record) => {
 				return (
-					<span style={{ overflow: "hidden", display: "flex" }}>
+					<span
+						style={{
+							overflow: "hidden",
+							display: "flex",
+							width: "100%",
+							justifyContent: "center",
+						}}>
 						<span style={{ color: "#fe7ef3" }}>
-							{FormatData.parsing(record.pre2_183.value)}
+							{FormatData.parsing(record.pre2_221.value)}
 						</span>
 						<span style={{ color: "#000000" }}>
-							{FormatData.parsing(record.preverb_143.value)}
+							{FormatData.parsing(record.preverb_178.value)}
 						</span>
 
 						<span style={{ color: "#ff1d25" }}>
 							{FormatData.parsing(record.root_220.value)}
 						</span>
 						<span style={{ color: "#0001eb" }}>
-							{FormatData.parsing(record.sf2_257.value)}
+							{FormatData.parsing(record.sf2_219.value)}
 						</span>
 						<span style={{ color: "#804008" }}>
-							{FormatData.parsing(record.ending_486.value)}
+							{FormatData.parsing(record.ending_215.value)}
 						</span>
 					</span>
 				);

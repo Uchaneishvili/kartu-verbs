@@ -39,6 +39,7 @@ h2 {
 th {
 	background-color: #1e439b !important;
 	color: white !important;
+	text-align: center !important;
 }
 
 .ant-card-head {
@@ -46,4 +47,8 @@ th {
 	width: 100%;
 	text-align: center;
 	color: white !important;
+}
+
+table {
+	text-align: center !important;
 }
