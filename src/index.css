@@ -1,6 +1,6 @@
 /** @format */
 body {
-	font-family: 'Nunito', sans-serif;
+	font-family: "Nunito", sans-serif;
 	background-color: #f8f8f9;
 }
 
@@ -34,4 +34,16 @@ h2 {
 .ant-table-tbody > tr > td,
 .ant-table-cell {
 	border: none !important;
+}
+
+th {
+	background-color: #1e439b !important;
+	color: white !important;
+}
+
+.ant-card-head {
+	background-color: #1e439b !important;
+	width: 100%;
+	text-align: center;
+	color: white !important;
 }
