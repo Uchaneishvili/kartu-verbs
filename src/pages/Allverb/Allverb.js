@@ -1,5 +1,3 @@
-/** @format */
-
 import { React, useState } from "react";
 import { Table, Card, Divider, Radio, Select } from "antd";
 import { useList } from "../../hooks/TableDataLoader.js";

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Table, Collapse, Row, Card } from "antd";
 import { useList } from "../../hooks/TableDataLoader.js";
 import Page from "../../components/page";
@@ -10,6 +10,8 @@ import { useParams } from "react-router-dom";
 const DetailPage = () => {
 	const { id } = useParams();
 	const { Panel } = Collapse;
+
+	const [loader, setLoader] = useState(true);
 
 	const query = (prop) => {
 		return `PREFIX n1: <file:///home/achiko/clarino/2023/f12/>
@@ -45,7 +47,34 @@ LIMIT 6`;
 	const [imperfect] = useList(query("imperfect"));
 	const [pastPerfect] = useList(query("pluperfect"));
 
-	console.log(presentConjunctive);
+	useEffect(() => {
+		if (
+			present.length > 0 &&
+			presentConjunctive.length > 0 &&
+			presentPerfect.length > 0 &&
+			future.length > 0 &&
+			conditional.length > 0 &&
+			futureConjunctive.length > 0 &&
+			aorist.length > 0 &&
+			optative.length > 0 &&
+			imperfect.length > 0 &&
+			pastPerfect.length > 0
+		) {
+			setLoader(false);
+		}
+	}, [
+		present,
+		presentConjunctive,
+		presentPerfect,
+		future,
+		conditional,
+		futureConjunctive,
+		aorist,
+		optative,
+		imperfect,
+		pastPerfect,
+	]);
+
 	const generatePersonAndNumber = (record) => {
 		console.log(record.person_333.value);
 		switch (FormatData.parsing(record.person_333.value)) {
@@ -163,6 +192,7 @@ LIMIT 6`;
 												width: 350,
 											}}>
 											<Table
+												loading={loader}
 												size="small"
 												bordered={false}
 												columns={columns}
@@ -179,6 +209,7 @@ LIMIT 6`;
 											}}>
 											<Table
 												size="small"
+												loading={loader}
 												bordered={false}
 												columns={columns}
 												dataSource={presentConjunctive}
@@ -194,6 +225,7 @@ LIMIT 6`;
 											}}>
 											<Table
 												size="small"
+												loading={loader}
 												bordered={false}
 												columns={columns}
 												dataSource={presentPerfect}
