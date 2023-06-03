@@ -212,7 +212,7 @@ LIMIT 6`;
 											title="Future"
 											bordered={false}
 											style={{
-												width: 300,
+												width: 350,
 											}}>
 											<Table
 												size="small"
@@ -227,7 +227,7 @@ LIMIT 6`;
 											title="conditional"
 											bordered={false}
 											style={{
-												width: 300,
+												width: 350,
 											}}>
 											<Table
 												size="small"
@@ -242,7 +242,7 @@ LIMIT 6`;
 											title="Future Conjuctive"
 											bordered={false}
 											style={{
-												width: 300,
+												width: 350,
 											}}>
 											<Table
 												size="small"
@@ -264,7 +264,7 @@ LIMIT 6`;
 											title="Aorist"
 											bordered={false}
 											style={{
-												width: 300,
+												width: 350,
 											}}>
 											<Table
 												size="small"
@@ -279,7 +279,7 @@ LIMIT 6`;
 											title="Optative"
 											bordered={false}
 											style={{
-												width: 300,
+												width: 350,
 											}}>
 											<Table
 												size="small"
@@ -301,7 +301,7 @@ LIMIT 6`;
 											title="Imperfect"
 											bordered={false}
 											style={{
-												width: 300,
+												width: 350,
 											}}>
 											<Table
 												size="small"
@@ -316,7 +316,7 @@ LIMIT 6`;
 											title="Past Perfect"
 											bordered={false}
 											style={{
-												width: 300,
+												width: 350,
 											}}>
 											<Table
 												size="small"
