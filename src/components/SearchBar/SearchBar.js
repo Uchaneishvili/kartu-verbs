@@ -28,17 +28,6 @@ const SearchBar = () => {
 		}
 	};
 
-	// 	const query = `PREFIX text: <http://jena.apache.org/text#>
-	// PREFIX n1: <file:///home/achiko/clarino/2023/f12/>
-	// SELECT DISTINCT ?inflected_verb_1 ?vn2_103 ?surface_form_140
-	// WHERE { ?surface_form_140 text:query "${FormatData.convertGeorgianToLatin(
-	// 		searchTerm
-	// 	)}*" .
-	//         ?inflected_verb_1 a n1:inflected_verb .
-	//         ?inflected_verb_1 n1:vn2 ?vn2_103 .
-	//         ?inflected_verb_1 n1:surface_form ?surface_form_140 . }
-	// LIMIT 10`;
-
 	const query = `PREFIX text: <http://jena.apache.org/text#>
 PREFIX n1: <file:///home/achiko/clarino/2023/f12/>
 SELECT DISTINCT ?inflected_verb_1 ?surface_form_197 ?vn2_234
@@ -48,7 +37,7 @@ WHERE { ?inflected_verb_1 text:query "${FormatData.convertGeorgianToLatin(
         ?inflected_verb_1 a n1:inflected_verb .
         ?inflected_verb_1 n1:surface_form ?surface_form_197 .
         ?inflected_verb_1 n1:vn2 ?vn2_234 . }
-LIMIT 200`;
+LIMIT 10`;
 	const [list] = useList(query);
 
 	const getSuggestions = useCallback(

@@ -52,29 +52,11 @@ LIMIT 6`;
 		if (
 			present.length > 0 &&
 			presentConjunctive.length > 0 &&
-			presentPerfect.length > 0 &&
-			future.length > 0 &&
-			conditional.length > 0 &&
-			futureConjunctive.length > 0 &&
-			aorist.length > 0 &&
-			optative.length > 0 &&
-			imperfect.length > 0 &&
-			pastPerfect.length > 0
+			presentPerfect.length > 0
 		) {
 			setLoader(false);
 		}
-	}, [
-		present,
-		presentConjunctive,
-		presentPerfect,
-		future,
-		conditional,
-		futureConjunctive,
-		aorist,
-		optative,
-		imperfect,
-		pastPerfect,
-	]);
+	}, [present, presentConjunctive, presentPerfect]);
 
 	const generatePersonAndNumber = (record) => {
 		switch (FormatData.parsing(record.person_333.value)) {
