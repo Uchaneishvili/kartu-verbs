@@ -155,13 +155,141 @@ LIMIT 6`;
 
 	return (
 		<>
-			<Header search={true} />
+			<Header />
 			<main>
 				<Page>
 					<div className="page-container">
 						<div className="inner-container">
-							<div style={{ paddingBottom: "2%" }}>
+							<div style={{ paddingBottom: "1%", paddingTop: "1%" }}>
 								<SearchBar />
+							</div>
+							<div
+								style={{
+									width: "100%",
+								}}>
+								<div
+									style={{
+										height: "100%",
+										backgroundColor: "rgb(236, 236, 237)",
+										padding: "10px	",
+									}}>
+									<div style={{ height: "100%" }}>
+										<div
+											style={{
+												display: "flex",
+												flexDirection: "row",
+												alignContent: "center",
+												flexWrap: "nowrap",
+												borderRadius: "5px",
+												justifyContent: "center",
+											}}>
+											<div
+												style={{
+													display: "flex",
+													flexWrap: "nowrap",
+													flexDirection: "column",
+													alignItems: "center",
+													width: "50px",
+												}}>
+												<Card
+													size="small"
+													style={{
+														marginTop: "5px",
+														marginBottom: "5px",
+														backgroundColor: "#fe7ef3",
+														width: "30px",
+														height: "30px",
+													}}
+												/>
+												<div style={{ fontSize: "10px" }}>Preradical</div>
+											</div>
+
+											<div
+												style={{
+													display: "flex",
+													flexWrap: "nowrap",
+													flexDirection: "column",
+													alignItems: "center",
+													width: "50px",
+												}}>
+												<Card
+													size="small"
+													style={{
+														marginTop: "5px",
+														marginBottom: "5px",
+														backgroundColor: "#000000",
+														width: "30px",
+														height: "30px",
+													}}
+												/>
+												<div style={{ fontSize: "10px" }}>Preverb</div>
+											</div>
+
+											<div
+												style={{
+													display: "flex",
+													flexWrap: "nowrap",
+													flexDirection: "column",
+													alignItems: "center",
+													width: "50px",
+												}}>
+												<Card
+													size="small"
+													style={{
+														marginTop: "5px",
+														marginBottom: "5px",
+														backgroundColor: "#ff1d25",
+														width: "30px",
+														height: "30px",
+													}}
+												/>
+												<div style={{ fontSize: "10px" }}>ROOT</div>
+											</div>
+
+											<div
+												style={{
+													display: "flex",
+													flexWrap: "nowrap",
+													flexDirection: "column",
+													alignItems: "center",
+													width: "50px",
+												}}>
+												<Card
+													size="small"
+													style={{
+														marginTop: "5px",
+														marginBottom: "5px",
+														backgroundColor: "#0001eb",
+														width: "30px",
+														height: "30px",
+													}}
+												/>
+												<div style={{ fontSize: "10px" }}>Stemformant</div>
+											</div>
+
+											<div
+												style={{
+													display: "flex",
+													flexWrap: "nowrap",
+													flexDirection: "column",
+													alignItems: "center",
+													width: "50px",
+												}}>
+												<Card
+													size="small"
+													style={{
+														marginTop: "5px",
+														marginBottom: "5px",
+														backgroundColor: "#804008",
+														width: "30px",
+														height: "30px",
+													}}
+												/>
+												<div style={{ fontSize: "10px" }}>Ending</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 							<Collapse
 								defaultActiveKey={["1"]}

@@ -10,7 +10,7 @@ import { useCallback } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import FormatData from "../../utils/FormatData";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [suggestionsOpen, setSuggestionsOpen] = useState(false);
 	const [suggestions, setSuggestions] = useState([]);

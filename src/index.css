@@ -14,7 +14,7 @@ h2 {
 }
 
 .page-wrapper {
-	background: #ffffff;
+	background: #f3f3f3;
 	padding: 25px 16px;
 	margin: 0 25px 25px 25px;
 }
@@ -29,7 +29,9 @@ h2 {
 
 .inner-container {
 	min-width: 80%;
-	padding: 1%;
+	margin: 1%;
+	background-color: rgb(236, 236, 237);
+	border-radius: 2%;
 }
 
 .ant-table-tbody > tr > td,

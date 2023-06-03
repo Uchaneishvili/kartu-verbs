@@ -11,11 +11,12 @@ const SuggestionItem = (props) => {
 		<div className={styles.container}>
 			<div
 				className={styles.description}
-				onClick={() =>
+				onClick={() => {
+					props.onNavigate();
 					navigate(
-						`detailPage/${FormatData.parsing(props.suggestion.vn2_234.value)}`
-					)
-				}>
+						`/detailPage/${FormatData.parsing(props.suggestion.vn2_234.value)}`
+					);
+				}}>
 				<div className={styles.description__title}>
 					{FormatData.convertLatinToGeorgian(
 						FormatData.parsing(props.suggestion.surface_form_197.value)
