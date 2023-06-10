@@ -16,6 +16,30 @@ const Allverb = () => {
 		setValue(e.target.value);
 	};
 
+	const generatePersonAndNumber = (record) => {
+		switch (FormatData.parsing(record.person_217.value)) {
+			case "1":
+				if (FormatData.parsing(record.number_216.value) === "pl") {
+					return "1PL";
+				} else {
+					return "1S";
+				}
+			case "2":
+				if (FormatData.parsing(record.number_216.value) === "pl") {
+					return "2PL";
+				} else {
+					return "2S";
+				}
+			case "3":
+				if (FormatData.parsing(record.number_216.value) === "pl") {
+					return "3PL";
+				} else {
+					return "3S";
+				}
+			default:
+				return "-";
+		}
+	};
 	const tenses = [
 		"aorist ",
 		"optative ",
@@ -44,6 +68,9 @@ WHERE { ?inflected_verb_1 a n1:inflected_verb .
         ?inflected_verb_1 n1:root ?root_220 .
         ?inflected_verb_1 n1:sf2 ?sf2_219 .
         ?inflected_verb_1 n1:ending ?ending_215 .
+        ?inflected_verb_1 n1:person ?person_217 .
+        ?inflected_verb_1 n1:number ?number_216 .
+        ?inflected_verb_1 n1:tense ?tense_218 .
       	?inflected_verb_1 n1:number n1:${value[1] + value[2]}.
 		    ?inflected_verb_1 n1:person n1:${value[0]} .
 		    ?inflected_verb_1 n1:tense n1:${curTense} .}
@@ -59,10 +86,22 @@ LIMIT 200`
 	const columns = [
 		{
 			title: "VERBAL NOUN (GEO)",
-			width: "500px",
+			width: "200px",
 			key: "VERBAL NOUN (GEO)",
+			sorter: (a, b) => {
+				const verbalNounA = FormatData.parsing(a.vn2_140.value);
+				const verbalNounB = FormatData.parsing(b.vn2_140.value);
+
+				if (verbalNounA < verbalNounB) {
+					return -1;
+				}
+				if (verbalNounA > verbalNounB) {
+					return 1;
+				}
+
+				return 0;
+			},
 			render: (record) => {
-				console.log(record.root_220.value);
 				return (
 					<Link to={`/detailPage/${FormatData.parsing(record.vn2_140.value)}`}>
 						{FormatData.convertLatinToGeorgian(
@@ -74,7 +113,7 @@ LIMIT 200`
 		},
 		{
 			title: "VERBAL NOUN (ENG)",
-			width: "500px",
+			width: "200px",
 			key: "VERBAL NOUN (ENG)",
 			render: (record) => {
 				return FormatData.parsing(record.vn2_140.value);
@@ -82,7 +121,7 @@ LIMIT 200`
 		},
 		{
 			title: "VERBAL FORM (GEO)",
-			width: "500px",
+			width: "200px",
 			key: "VERBAL FORM (GEO)",
 			render: (record) => {
 				return (
@@ -125,7 +164,7 @@ LIMIT 200`
 		},
 		{
 			title: "VERBAL FORM (ENG)",
-			width: "500px",
+			width: "200px",
 			key: "VERBAL FORM (ENG)",
 			render: (record) => {
 				return (
@@ -154,6 +193,23 @@ LIMIT 200`
 						</span>
 					</span>
 				);
+			},
+		},
+		{
+			title: "PERSON AND NUMBER",
+			width: "200px",
+			key: "PERSON AND NUMBER",
+			render: (record) => {
+				return <>{generatePersonAndNumber(record)}</>;
+			},
+		},
+
+		{
+			title: "Tense",
+			width: "200px",
+			key: "Tense",
+			render: (record) => {
+				return FormatData.parsing(record.tense_218.value);
 			},
 		},
 	];

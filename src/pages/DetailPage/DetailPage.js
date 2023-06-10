@@ -35,7 +35,6 @@ LIMIT 6`;
 	const [presentConjunctive] = useList(query("conj-present"));
 	const [presentPerfect] = useList(query("perfect"));
 
-	console.log(present);
 	//FUTURE SUBSERIES
 	const [future] = useList(query("future"));
 	const [conditional] = useList(query("conditional"));

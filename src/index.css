@@ -34,6 +34,9 @@ h2 {
 	border-radius: 2%;
 }
 
+.ant-table-column-sorter-inner {
+	color: #ffffff;
+}
 .ant-table-tbody > tr > td,
 .ant-table-cell {
 	border: none !important;
