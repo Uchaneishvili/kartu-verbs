@@ -88,7 +88,8 @@ LIMIT 10`;
 						zIndex: suggestionsOpen ? 102 : 0,
 					}}
 					className={styles.searchInput}
-					placeholder="Search any verb..."
+					placeholder={"Search Any Verb ..."}
+					defaultValue={props.verb}
 					onChange={(value) => (value ? handleChange(value) : resetValues())}
 					onFocus={() => {
 						setSuggestionsOpen(true);

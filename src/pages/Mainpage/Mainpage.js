@@ -31,7 +31,7 @@ function Mainpage() {
 					<div className={styles.buttonContainer}>
 						<button
 							onClick={() => {
-								navigate("/detailPage/tamash");
+								navigate("/detailPage/sauzmoba");
 							}}>
 							One Verb
 						</button>

@@ -55,7 +55,7 @@ function Header(props) {
 							border: "1px solid #FFFFFF",
 							borderRadius: "10px",
 						}}
-						onClick={() => navigate("/detailPage/tamash")}>
+						onClick={() => navigate("/detailPage/sauzmoba")}>
 						<DoubleLeftOutlined />
 						{"One Verb"}
 					</button>

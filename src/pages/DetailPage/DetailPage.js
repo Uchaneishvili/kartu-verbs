@@ -35,6 +35,7 @@ LIMIT 6`;
 	const [presentConjunctive] = useList(query("conj-present"));
 	const [presentPerfect] = useList(query("perfect"));
 
+	console.log(present);
 	//FUTURE SUBSERIES
 	const [future] = useList(query("future"));
 	const [conditional] = useList(query("conditional"));
@@ -161,7 +162,7 @@ LIMIT 6`;
 					<div className="page-container">
 						<div className="inner-container">
 							<div style={{ paddingBottom: "1%", paddingTop: "1%" }}>
-								<SearchBar />
+								<SearchBar verb={FormatData.convertLatinToGeorgian(id)} />
 							</div>
 							<div
 								style={{
@@ -302,7 +303,7 @@ LIMIT 6`;
 											title="Present indicative"
 											bordered={false}
 											style={{
-												width: 350,
+												width: 380,
 											}}>
 											<Table
 												loading={loader}
@@ -318,7 +319,7 @@ LIMIT 6`;
 											title="Present Conjunctive"
 											bordered={false}
 											style={{
-												width: 350,
+												width: 380,
 											}}>
 											<Table
 												size="small"
@@ -334,7 +335,7 @@ LIMIT 6`;
 											title="Present Perfect"
 											bordered={false}
 											style={{
-												width: 350,
+												width: 380,
 											}}>
 											<Table
 												size="small"
@@ -357,7 +358,7 @@ LIMIT 6`;
 											title="Future"
 											bordered={false}
 											style={{
-												width: 350,
+												width: 380,
 											}}>
 											<Table
 												size="small"
@@ -372,7 +373,7 @@ LIMIT 6`;
 											title="conditional"
 											bordered={false}
 											style={{
-												width: 350,
+												width: 380,
 											}}>
 											<Table
 												size="small"
@@ -387,7 +388,7 @@ LIMIT 6`;
 											title="Future Conjuctive"
 											bordered={false}
 											style={{
-												width: 350,
+												width: 380,
 											}}>
 											<Table
 												size="small"
@@ -402,14 +403,14 @@ LIMIT 6`;
 								</Panel>
 
 								<Panel
-									header="Aoris Series"
+									header="Aorist Series"
 									key="3">
 									<Row style={{ justifyContent: "space-between" }}>
 										<Card
 											title="Aorist"
 											bordered={false}
 											style={{
-												width: 350,
+												width: 380,
 											}}>
 											<Table
 												size="small"
@@ -424,7 +425,7 @@ LIMIT 6`;
 											title="Optative"
 											bordered={false}
 											style={{
-												width: 350,
+												width: 380,
 											}}>
 											<Table
 												size="small"
@@ -446,7 +447,7 @@ LIMIT 6`;
 											title="Imperfect"
 											bordered={false}
 											style={{
-												width: 350,
+												width: 380,
 											}}>
 											<Table
 												size="small"
@@ -461,7 +462,7 @@ LIMIT 6`;
 											title="Past Perfect"
 											bordered={false}
 											style={{
-												width: 350,
+												width: 380,
 											}}>
 											<Table
 												size="small"

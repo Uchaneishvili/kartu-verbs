@@ -5,6 +5,7 @@ import Page from "../../components/page";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import FormatData from "../../utils/FormatData";
+import { Link } from "react-router-dom";
 const { Option } = Select;
 
 const Allverb = () => {
@@ -61,8 +62,13 @@ LIMIT 200`
 			width: "500px",
 			key: "VERBAL NOUN (GEO)",
 			render: (record) => {
-				return FormatData.convertLatinToGeorgian(
-					FormatData.parsing(record.vn2_140.value)
+				console.log(record.root_220.value);
+				return (
+					<Link to={`/detailPage/${FormatData.parsing(record.vn2_140.value)}`}>
+						{FormatData.convertLatinToGeorgian(
+							FormatData.parsing(record.vn2_140.value)
+						)}
+					</Link>
 				);
 			},
 		},
