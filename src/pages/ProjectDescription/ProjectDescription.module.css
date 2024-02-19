@@ -1,0 +1,58 @@
+.wrapper {
+	position: relative;
+	min-height: 80vh;
+	background: #f0f0f0;
+	padding: 80px;
+}
+.card {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	padding: 20px 40px;
+	width: 1065px;
+	background-color: #fff;
+	border-radius: 8px;
+	flex-direction: column;
+	margin: 0 auto;
+}
+
+.card > h1 {
+	padding-bottom: "20px";
+	font-size: 36px;
+	font-weight: 500;
+	line-height: 42px;
+	letter-spacing: 0em;
+	text-align: left;
+	padding-left: 0px;
+}
+.card > h1::before {
+	content: "|";
+	top: 0;
+	left: 0;
+	color: #8e0727;
+	margin-right: 30px;
+	font-weight: bolder;
+}
+
+.description {
+	display: flex;
+	padding-left: 40px;
+
+	padding-right: 40px;
+	margin-bottom: 40px;
+}
+.description > p {
+	font-family: Helvetica;
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 23px;
+	letter-spacing: 0em;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+	outline: "none";
+	padding-bottom: 30px;
+}

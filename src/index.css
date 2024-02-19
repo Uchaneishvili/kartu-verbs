@@ -1,1 +1,65 @@
 /** @format */
+body {
+	font-family: "Nunito", sans-serif;
+	background-color: #f8f8f9;
+}
+
+#root {
+	height: 100vh;
+	background-color: #8e0726;
+}
+
+h2 {
+	font-weight: 200;
+}
+
+.ant-table-tbody > tr > td > a {
+	text-decoration: none !important;
+	color: black;
+}
+
+.page-wrapper {
+	background: #f3f3f3;
+	padding: 25px 16px;
+	margin: 0 25px 25px 25px;
+}
+
+.page-container {
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+}
+
+.inner-container {
+	min-width: 80%;
+	margin: 1%;
+	background-color: rgb(236, 236, 237);
+	border-radius: 2%;
+}
+
+.ant-table-column-sorter-inner {
+	color: #ffffff;
+}
+.ant-table-tbody > tr > td,
+.ant-table-cell {
+	border: none !important;
+}
+
+th {
+	background-color: #1e439b !important;
+	color: white !important;
+	text-align: center !important;
+}
+
+.ant-card-head {
+	background-color: #1e439b !important;
+	width: 100%;
+	text-align: center;
+	color: white !important;
+}
+
+table {
+	text-align: center !important;
+}
